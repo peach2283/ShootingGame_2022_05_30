@@ -13,7 +13,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름�
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
+HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -21,28 +21,26 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-    //초기화
-    START_DEBUG_CONSOLE();
-    cout << "콘솔창을 시작합니다" << endl;
-
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_SHOOTINGGAME20220530, szWindowClass, MAX_LOADSTRING);
 
     MyRegisterClass(hInstance);
 
-    // 애플리케이션 초기화를 수행합니다:
-    if (!InitInstance (hInstance, nCmdShow))
-    {
-        return FALSE;
-    }
+    HWND hWnd = InitInstance(hInstance, nCmdShow);
+
+    //초기화
+    START_DEBUG_CONSOLE();
+
+    InitGraphic(hWnd, 0, 0, 480, 800); //그래픽 초기화
+    Time::Init();                      //델타타임 초기화
 
     MSG msg;
 
     // 기본 메시지 루프입니다:
     while ( true )
     {
-        //PeekMessage ... 사용하기
+        //윈도우 메세지 처리 하는 코드
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) == TRUE)
         {
             TranslateMessage(&msg);
@@ -54,11 +52,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
         
+        //게임 동작시키는 코드
+        Clear(255, 0, 0);    //화면 클리어
 
+        Time::Update();     //델타타임 업데이트
+
+        ObjectManager::Update();  //게임객체 업데이트
+        ObjectManager::Draw();    //게임객체 그리기
+
+        Render();  //화면 출력
     }
 
     //종료하기
     STOP_DEBUG_CONSOLE();
+
+    ObjectManager::Clear();  //게임객체 전체 삭제
+    ExitGraphic();           //그래픽 종료
+
     return (int) msg.wParam;
 }
 
@@ -83,7 +93,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     return RegisterClassExW(&wcex);
 }
 
-BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+HWND InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
@@ -99,15 +109,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
                              hInstance, 
                              nullptr);
 
-   if (!hWnd)
+   if (hWnd==nullptr)
    {
-      return FALSE;
+      return nullptr;
    }
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-   return TRUE;
+   return hWnd;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -118,7 +128,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            //윈도우 화면에..다시 렌더링해서..장면 복구하기
+            Render();
+            
             EndPaint(hWnd, &ps);
         }
         break;
