@@ -40,15 +40,25 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while ( true )
     {
+        //PeekMessage ... 사용하기
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) == TRUE)
+        {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
+
+            if (msg.message == WM_QUIT)
+            {
+                break;
+            }
+        }
+        
+
     }
 
     //종료하기
     STOP_DEBUG_CONSOLE();
-
     return (int) msg.wParam;
 }
 
