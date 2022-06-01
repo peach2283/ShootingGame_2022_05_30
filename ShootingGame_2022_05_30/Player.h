@@ -5,11 +5,12 @@
 class Player : public Sprite
 {
 private:
+	float speed;
+
 public:
-	Player(string tag, string name, bool active, float px, float py);
+	Player(float px, float py);
 	~Player();
 
 	void Start();
 	void Update();
 };
-

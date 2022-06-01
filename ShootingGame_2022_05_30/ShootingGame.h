@@ -7,3 +7,4 @@
 #include "ObjectManager.h"
 #include "GameBG.h"
 #include "Player.h"
+#include "Laser.h"

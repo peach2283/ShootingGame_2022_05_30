@@ -2,12 +2,14 @@
 
 #include "Sprite.h"
 
-class GameBG : public Sprite
+class Laser : public Sprite
 {
 private:
+	float speed;
+
 public:
-	 GameBG(float px, float py);
-	~GameBG();
+	Laser(float px, float py);
+	~Laser();
 
 	void Start();
 	void Update();
