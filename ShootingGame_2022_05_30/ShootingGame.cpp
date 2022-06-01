@@ -21,6 +21,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+    //초기화
+    START_DEBUG_CONSOLE();
+
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_SHOOTINGGAME20220530, szWindowClass, MAX_LOADSTRING);
@@ -30,10 +33,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HWND hWnd = InitInstance(hInstance, nCmdShow);
 
     //초기화
-    START_DEBUG_CONSOLE();
-
     InitGraphic(hWnd, 0, 0, 480, 800); //그래픽 초기화
     Time::Init();                      //델타타임 초기화
+
+    //게임오브젝트들(배경, 플레이어) 추가하기
+    ObjectManager::Instantiate(new GameBG("", "", true, 0, 0));
 
     MSG msg;
 
@@ -97,13 +101,20 @@ HWND InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   //윈도우 크기 조정하기 - AdjustWindowRect
+   RECT rt = {0,0, 480, 800};
+   AdjustWindowRect(&rt, (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX), FALSE);
+
+   int width  = rt.right  - rt.left;
+   int height = rt.bottom - rt.top;
+
    HWND hWnd = CreateWindowW(szWindowClass, 
                              szTitle, 
-                             WS_OVERLAPPEDWINDOW,
+                             (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX ),
                              CW_USEDEFAULT, 
                              0, 
-                             CW_USEDEFAULT, 
-                             0, 
+                             width,    //윈도우 가로 크기
+                             height,   //윈도우 세로 크기
                              nullptr, 
                              nullptr, 
                              hInstance, 

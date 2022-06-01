@@ -6,3 +6,4 @@
 #include "Time.h"
 #include "ObjectManager.h"
 #include "GameBG.h"
+#include "Player.h"
