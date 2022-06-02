@@ -11,8 +11,9 @@ private:
 
 public:	
 
-	//게임객체를..목록에 추가해서..실제로 동작하는 인스턴스로 만드는 함수
+	//게임객체를..목록에 추가해서..실제로 동작하는 인스턴스로 만드는 함수 / 목록 삭제함수
 	static void Instantiate(GameObject* o);
+	static void Destroy(GameObject* o);
 
 	//게임 목록 업데이트 함수
 	static void Update();

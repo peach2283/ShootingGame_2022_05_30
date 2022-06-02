@@ -8,6 +8,20 @@ void ObjectManager::Instantiate(GameObject* o)
 	gameObjects.push_back(o);
 }
 
+void ObjectManager::Destroy(GameObject* o)
+{
+	for (int i = 0  ; i < gameObjects.size()  ; i++)
+	{
+		if (gameObjects[i] == o)
+		{
+			gameObjects.erase( gameObjects.begin() + i ); //목록에서 제거
+			delete o;                                     //객체..제거
+
+			i--;
+		}
+	}
+}
+
 void ObjectManager::Update()
 {
 	for (int i = 0; i < gameObjects.size(); i++)

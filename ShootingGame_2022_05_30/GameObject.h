@@ -48,7 +48,8 @@ public:
 	//기타..추가된 함수들//
 	void Translate(float x, float y);  //이동함수
 
-	//게임 객체 생성함수
+	//게임 객체 생성 / 제거 함수
 	void Instantiate(GameObject* obj);
+	void Destroy(GameObject* obj);
 };
 

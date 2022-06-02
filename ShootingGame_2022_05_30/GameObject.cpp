@@ -12,7 +12,6 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 GameObject::~GameObject()
 {
-	cout << "===게임 오브젝트 소멸자===" << endl;
 }
 
 void GameObject::Start()
@@ -92,4 +91,9 @@ void GameObject::Translate(float x, float y)
 void GameObject::Instantiate(GameObject* obj)
 {
 	ObjectManager::Instantiate(obj);
+}
+
+void GameObject::Destroy(GameObject* obj)
+{
+	ObjectManager::Destroy(obj);
 }

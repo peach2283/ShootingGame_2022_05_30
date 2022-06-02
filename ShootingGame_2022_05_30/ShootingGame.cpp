@@ -40,8 +40,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
 
-    //레이저 테스트 하기
-    //ObjectManager::Instantiate(new Laser(200, 400));
+    //키 입력 테스트 하기//
+    //while (true)
+    //{
+    //    if (GetAsyncKeyState(VK_SPACE) != 0)
+    //    {
+    //        cout << "키눌림";
+    //    }
+    //}
 
     MSG msg;
 

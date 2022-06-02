@@ -2,11 +2,13 @@
 
 Laser::Laser(float px, float py) : Sprite("","", true, px, py)
 {
-	this->speed = 250;
+	this->speed    = 250;
+	this->lifeTime = 5;
 }
 
 Laser::~Laser()
-{}
+{	
+}
 
 void Laser::Start()
 {
@@ -16,4 +18,11 @@ void Laser::Start()
 void Laser::Update()
 {
 	Translate(0, -speed * Time::deltaTime);
+
+	lifeTime = lifeTime - Time::deltaTime; //수명 줄이기
+
+	if (lifeTime <= 0)
+	{
+		Destroy(this);
+	}
 }
