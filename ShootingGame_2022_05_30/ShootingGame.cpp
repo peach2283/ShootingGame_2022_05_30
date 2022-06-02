@@ -40,6 +40,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
 
+    //레이저 테스트 하기
+    //ObjectManager::Instantiate(new Laser(200, 400));
+
     MSG msg;
 
     // 기본 메시지 루프입니다:

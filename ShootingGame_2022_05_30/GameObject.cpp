@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "ShootingGame.h"
 
 GameObject::GameObject(string tag, string name, bool active, float px, float py)
 {
@@ -44,9 +44,16 @@ float GameObject::GetPx()
 {
 	return px;
 }
+
 float GameObject::GetPy()
 {
 	return py;
+}
+
+void GameObject::GetPosition(float& px, float& py)
+{
+	px = this->px;
+	py = this->py;
 }
 
 //세터 함수//
@@ -80,4 +87,9 @@ void GameObject::Translate(float x, float y)
 {
 	px = px + x;
 	py = py + y;
+}
+
+void GameObject::Instantiate(GameObject* obj)
+{
+	ObjectManager::Instantiate(obj);
 }

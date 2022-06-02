@@ -35,6 +35,8 @@ public:
 	float GetPx();
 	float GetPy();
 
+	void GetPosition(float &px, float &py);
+
 	//세터 함수//
 	void SetTag(string tag);
 	void SetName(string name);
@@ -45,5 +47,8 @@ public:
 
 	//기타..추가된 함수들//
 	void Translate(float x, float y);  //이동함수
+
+	//게임 객체 생성함수
+	void Instantiate(GameObject* obj);
 };
 
