@@ -8,3 +8,4 @@
 #include "GameBG.h"
 #include "Player.h"
 #include "Laser.h"
+#include "Input.h"

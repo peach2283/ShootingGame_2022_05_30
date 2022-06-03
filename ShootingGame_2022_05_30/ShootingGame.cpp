@@ -16,8 +16,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
-enum class State {keyUpRep=0, keyDown=1, keyDownRep=2, keyUp=3 };
-
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -41,86 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //게임오브젝트들(배경, 플레이어) 추가하기
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
-
-    //키 입력 테스트 하기//
-    
-    //상태 검사 키값들//
-    int   keys[6]  = {VK_LEFT        ,  VK_RIGHT      ,            VK_UP,   VK_DOWN      , VK_SPACE       , 'Z' };
-    State state[6] = { State::keyUpRep, State::keyUpRep, State::keyUpRep , State::keyUpRep, State::keyUpRep, State::keyUpRep }; //초기 상태
-
-    while (true)
-    {
-        ///////////배열에 있는 키들의 상태 .. 변경 스테이트 머신////////
-        for (int i = 0; i < 6; i++)
-        {
-            switch (state[i])
-            {
-            case State::keyUpRep:
-            {
-                if (GetAsyncKeyState(keys[i]) != 0)
-                {
-                    state[i] = State::keyDown;
-                }
-                else {
-                    //state = State::keyUpRep;
-                }
-            }
-            break;
-
-            case State::keyDown:
-            {
-                if (GetAsyncKeyState(keys[i]) != 0)
-                {
-                    state[i] = State::keyDownRep;
-                }
-                else {
-                    state[i] = State::keyUp;
-                }
-            }
-            break;
-
-
-            case State::keyDownRep:
-            {
-                if (GetAsyncKeyState(keys[i]) == 0)
-                {
-                    state[i] = State::keyUp;
-                }
-                else {
-                    //state = State::keyDownRep;
-                }
-            }
-            break;
-
-            case State::keyUp:
-            {
-                if (GetAsyncKeyState(keys[i]) == 0)
-                {
-                    state[i] = State::keyUpRep;
-                }
-                else {
-                    state[i] = State::keyDown;
-                }
-            }
-            break;
-            }
-        }
-        /////////////////////////////////////////////////////////
-
-
-
-
-
-        ///////////////////////////////////////////////////
-        ///////키 상태..체크하기////////////////////////////
-
-        if (state[4] == State::keyDown)
-        {
-            cout << "발사키가 눌림";
-        }
-        /////////////////////////////////////////////////////      
-    }
-
+   
     MSG msg;
 
     // 기본 메시지 루프입니다:
@@ -142,6 +61,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         Clear(255, 0, 0);    //화면 클리어
 
         Time::Update();     //델타타임 업데이트
+        Input::Update();    //키 입력 상태 업데이트
 
         ObjectManager::Update();  //게임객체 업데이트
         ObjectManager::Draw();    //게임객체 그리기

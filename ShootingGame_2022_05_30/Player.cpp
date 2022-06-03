@@ -76,7 +76,7 @@ void Player::Move()  //이동 함수
 void Player::Fire()  //발사 함수
 {
 	/////////플레이어 레이저 발사하기/////////
-	if (GetAsyncKeyState(VK_SPACE) != 0)
+	if (Input::GetKeyDown(KeyCode::Space) == true)
 	{
 		float px, py;
 
