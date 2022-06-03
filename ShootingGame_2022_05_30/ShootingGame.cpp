@@ -16,6 +16,8 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
+enum class State {keyUpRep=0, keyDown=1, keyDownRep=2, keyUp=3 };
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -41,13 +43,83 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new Player(240-34, 650));
 
     //키 입력 테스트 하기//
-    //while (true)
-    //{
-    //    if (GetAsyncKeyState(VK_SPACE) != 0)
-    //    {
-    //        cout << "키눌림";
-    //    }
-    //}
+    
+    //상태 검사 키값들//
+    int   keys[6]  = {VK_LEFT        ,  VK_RIGHT      ,            VK_UP,   VK_DOWN      , VK_SPACE       , 'Z' };
+    State state[6] = { State::keyUpRep, State::keyUpRep, State::keyUpRep , State::keyUpRep, State::keyUpRep, State::keyUpRep }; //초기 상태
+
+    while (true)
+    {
+        ///////////배열에 있는 키들의 상태 .. 변경 스테이트 머신////////
+        for (int i = 0; i < 6; i++)
+        {
+            switch (state[i])
+            {
+            case State::keyUpRep:
+            {
+                if (GetAsyncKeyState(keys[i]) != 0)
+                {
+                    state[i] = State::keyDown;
+                }
+                else {
+                    //state = State::keyUpRep;
+                }
+            }
+            break;
+
+            case State::keyDown:
+            {
+                if (GetAsyncKeyState(keys[i]) != 0)
+                {
+                    state[i] = State::keyDownRep;
+                }
+                else {
+                    state[i] = State::keyUp;
+                }
+            }
+            break;
+
+
+            case State::keyDownRep:
+            {
+                if (GetAsyncKeyState(keys[i]) == 0)
+                {
+                    state[i] = State::keyUp;
+                }
+                else {
+                    //state = State::keyDownRep;
+                }
+            }
+            break;
+
+            case State::keyUp:
+            {
+                if (GetAsyncKeyState(keys[i]) == 0)
+                {
+                    state[i] = State::keyUpRep;
+                }
+                else {
+                    state[i] = State::keyDown;
+                }
+            }
+            break;
+            }
+        }
+        /////////////////////////////////////////////////////////
+
+
+
+
+
+        ///////////////////////////////////////////////////
+        ///////키 상태..체크하기////////////////////////////
+
+        if (state[4] == State::keyDown)
+        {
+            cout << "발사키가 눌림";
+        }
+        /////////////////////////////////////////////////////      
+    }
 
     MSG msg;
 
