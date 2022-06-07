@@ -3,10 +3,7 @@
 int   Input::keys[9]  = { VK_LBUTTON    ,   VK_RBUTTON     ,  VK_MBUTTON    , VK_LEFT        ,   VK_RIGHT      ,            VK_UP,   VK_DOWN      , VK_SPACE       , 'Z' };
 State Input::state[9] = { State::keyUpRep,  State::keyUpRep, State::keyUpRep ,State::keyUpRep, State::keyUpRep, State::keyUpRep , State::keyUpRep, State::keyUpRep, State::keyUpRep }; //초기 상태
 
-//마우스 버튼 가상키...  VK_LBUTTON, VK_RBUTTON, VK_MBUTTON
-
-//마우스 함수 : Input의 GetMouseButton, GetMouseButtonDown, GetMouseButtonUP
-//마우스 버튼 구분은 0 -왼쪽, 1 - 오른쪽, 2- 가운데..
+Vector2 Input::mousePosition = { 0,0 };
 
 void Input::Update()
 {

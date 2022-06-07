@@ -40,6 +40,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
    
+    //적기 추가하기..테스트
+    ObjectManager::Instantiate(new Enemy(0, 100));
+
     MSG msg;
 
     // 기본 메시지 루프입니다:
@@ -137,6 +140,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    //마우스 좌표 구하기
+    case WM_RBUTTONDOWN:
+    case WM_RBUTTONUP:
+
+    case WM_MBUTTONDOWN:
+    case WM_MBUTTONUP:
+
+    case WM_LBUTTONUP:
+    case WM_MOUSEMOVE:
+    case WM_LBUTTONDOWN:
+    {
+        short mx = LOWORD(lParam);
+        short my = HIWORD(lParam);
+
+        Input::mousePosition.x = mx;
+        Input::mousePosition.y = my;
+    }
+    break;
+
     case WM_PAINT:
         {
             PAINTSTRUCT ps;

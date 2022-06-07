@@ -6,6 +6,13 @@
 enum class State  { keyUpRep = 0, keyDown  = 1, keyDownRep = 2, keyUp = 3 };
 enum class KeyCode{ LeftArrow =3, RightArrow=4, UpArrow =5    , DownArrow=6, Space=7,   Z=8};
 
+//마우스 좌표 저장 2차원 벡터//
+struct Vector2
+{
+	short x;
+	short y;
+};
+
 class Input
 {
 private:
@@ -14,6 +21,9 @@ private:
 	static State state[9];
 
 public:
+
+	//마우스 좌표 저장 변수
+	static Vector2 mousePosition;
 
 	static void Update();
 

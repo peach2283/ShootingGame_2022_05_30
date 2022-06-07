@@ -18,7 +18,7 @@ void Player::Start()
 }
 
 void Player::Update()
-{	
+{		
 	Move();  //이동 함수
 	Fire();	 //발사 함수
 }
