@@ -41,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new Player(240-34, 650));
    
     //적기 추가하기..테스트
-    ObjectManager::Instantiate(new Enemy(0, 100));
+    ObjectManager::Instantiate(new Enemy(240-95, 100));
 
     MSG msg;
 
