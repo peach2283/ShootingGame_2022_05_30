@@ -65,6 +65,55 @@ bool BMP::ReadBMP(const char* fileName, Image* img)
 	}
 }
 
+bool BMP::ReadBMP(const char* fileName, int x, int y, int width, int height,  Image* img)
+{
+	//비트맵 파일 읽기//
+	FILE* stream;
+
+	BITMAPFILEHEADER fileHeader;
+	BITMAPINFOHEADER infoHeader;
+
+	stream = fopen(fileName, "rb");
+
+	if (stream != nullptr)
+	{
+		//BITMAPFILEHEADER 읽어오기//
+		fread(&fileHeader, sizeof(fileHeader), 1, stream);
+
+		//BITMAPINFOHEADER 읽어오기//
+		fread(&infoHeader, sizeof(infoHeader), 1, stream);
+
+		//x, y, width, height 사각형 영여에서..이미지 로드하기//
+		int offset = (infoHeader.biWidth * y + x) * 4;
+		int hGap   = (infoHeader.biWidth - width) * 4;
+
+		fseek(stream, offset, SEEK_CUR);
+
+		unsigned int* argb = new unsigned int[width * height];
+
+		for (int i = 0; i < height; i++)
+		{
+			fread(argb + i*width, sizeof(unsigned int), width, stream);  //이미지 사각형의..데이타 로드
+			fseek(stream        , hGap, SEEK_CUR);                       //이미지 사각형으..좌/우 데이타..건너뛰기
+		}
+
+		fclose(stream);  //파일닫기
+
+		//포인터로..로드한 사각형..정보...반환하기..
+		img->width  = width;
+		img->height = height;
+		img->argb   = argb;
+
+		return true;  //이미지 로드 성공
+	}
+	else {
+		printf("비트맵 파일을 읽어올수 없습니다\n");
+
+		return false;  //이미지 로드 실패
+	}
+}
+
+
 void BMP::DrawBMP(float px, float py, Image* img)
 {
 	//이미지 draw//

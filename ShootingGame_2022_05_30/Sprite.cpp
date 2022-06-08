@@ -21,6 +21,11 @@ void Sprite::SetSprite(const char* fileName)
     BMP::ReadBMP(fileName, &sprite);
 }
 
+void Sprite::SetSprite(const char* fileName, int x, int y, int width, int height)
+{
+    BMP::ReadBMP(fileName, x, y, width, height, &sprite);
+}
+
 void Sprite::Draw()
 {
     //객체 위치 가져오기//

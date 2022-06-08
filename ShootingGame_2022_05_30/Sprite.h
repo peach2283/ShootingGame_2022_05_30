@@ -13,6 +13,8 @@ public:
 	~Sprite();
 
 	void SetSprite(const char* fileName);
+	void SetSprite(const char* fileName, int x, int y, int width, int height);
+
 	void Draw();
 };
 
