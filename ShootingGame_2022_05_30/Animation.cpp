@@ -3,19 +3,21 @@
 Animation::Animation(string tag, string name, bool active, float px, float py)
 		 :GameObject(tag, name, active, px, py)
 {
-	this->index = 0;
+	this->index		= 0;
+
+	this->animTimer = 0;
+	this->animDelay = 1 / 15.0f;
 }
 
 Animation::~Animation()
 {}
 
-void Animation::Start()
+void Animation::AddSprite(const char* fileName, int x, int y, int width, int height)
 {
-	//애니메이션 이미지 로드하기//
-	BMP::ReadBMP("Asset/적기.bmp", 1 + 200 * 0 , 141, 190, 137, &sprites[0]);
-	BMP::ReadBMP("Asset/적기.bmp", 1 + 200 * 1 , 141, 190, 137, &sprites[1]);
-	BMP::ReadBMP("Asset/적기.bmp", 1 + 200 * 2 , 141, 190, 137, &sprites[2]);
-	BMP::ReadBMP("Asset/적기.bmp", 1 + 200 * 3 , 141, 190, 137, &sprites[3]);
+	Image img;
+
+	BMP::ReadBMP(fileName, x, y, width, height, &img);
+	sprites.push_back(img);
 }
 
 void Animation::Draw()
@@ -25,10 +27,18 @@ void Animation::Draw()
 
 	BMP::DrawBMP(px, py, &sprites[ index ]);
 
-	index++;
+	//이미지 인덱스..변경..시간 측정//
+	animTimer = animTimer + Time::deltaTime;
 
-	if (index >= 4)
+	if (animTimer >= animDelay)
 	{
-		index = 0;
+		index++;
+
+		if ( index >= sprites.size() )
+		{
+			index = 0;
+		}
+
+		animTimer = 0;  //타이머..리셋
 	}
 }

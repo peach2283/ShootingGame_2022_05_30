@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Enemy::Enemy(float px, float py) : Sprite("","", true, px, py)
+Enemy::Enemy(float px, float py) : Animation("","", true, px, py)
 {
 	this->speed = 100;
 	this->state = State::left;
@@ -11,8 +11,21 @@ Enemy::~Enemy()
 
 void Enemy::Start()
 {
-	//이미지 로드하기
-	SetSprite("Asset/적기.bmp", 201, 141, 190, 137);
+	//애니메이션 이미지 로드하기 - 피해없는 애니메이션
+	AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 281, 190, 137);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 281, 190, 137);
+
+	//애니메이션 이미지 로드하기 - 경미한 피해를 받은 애니메이션
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 141, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 141, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 141, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 141, 190, 137);
+
+	//애니메이션 이미지 로드하기 - 심각한 피해를 받은 애니메이션
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 1, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 1, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 1, 190, 137);
+	//AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 1, 190, 137);
 }
 
 void Enemy::Update()

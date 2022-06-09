@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Sprite.h"
+#include "Animation.h"
 
-class Enemy : public Sprite
+class Enemy : public Animation
 {
 	enum class State { left = 0, right = 1 };
 
