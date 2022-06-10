@@ -3,7 +3,7 @@
 Player::Player(float px, float py) :Sprite("", "", true, px, py)
 {
 	this->speed      = 200;
-	this->laserCount = 1;   //아이템을 획득하면..발사갯수 증가
+	this->laserCount = 3;   //아이템을 획득하면..발사갯수 증가
 
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //발사간 지연시간
@@ -14,7 +14,7 @@ Player::~Player()
 
 void Player::Start()
 {
-	SetSprite("Asset/플레이어.bmp");
+	SetSprite("Asset/팬텀이동2.bmp", 192, 0, 62, 80);
 }
 
 void Player::Update()
@@ -33,9 +33,9 @@ void Player::Move()  //이동 함수
 		//x 좌표 가져오기
 		float px = GetPx();
 
-		if (px < 0)
+		if (px < -9)
 		{
-			SetPx(0);
+			SetPx(-9);
 		}
 	}
 
@@ -45,9 +45,9 @@ void Player::Move()  //이동 함수
 
 		float px = GetPx();
 
-		if (px > 480 - 68)
+		if (px > 480  - 62 + 9)
 		{
-			SetPx(480 - 68);
+			SetPx(480 - 62 + 9);
 		}
 	}
 
@@ -69,9 +69,9 @@ void Player::Move()  //이동 함수
 
 		float py = GetPy();
 
-		if (py > 800 - 91)
+		if (py > 800 - 80 + 7)
 		{
-			SetPy(800 - 91);
+			SetPy(800 - 80 + 7);
 		}
 	}
 }
@@ -93,20 +93,20 @@ void Player::Fire()  //발사 함수
 			if (laserCount == 1)
 			{
 				//레이저 한발 쏘기
-				Instantiate(new Laser(px + 31, py - 33));
+				Instantiate(new Laser(px + 28, py - 26));
 			}
 			else if (laserCount == 2)
 			{
 				//레이저 두발 쏘기
-				Instantiate(new Laser(px + 31 - 10, py - 33));
-				Instantiate(new Laser(px + 31 + 10, py - 33));
+				Instantiate(new Laser(px + 28 - 10, py - 30));
+				Instantiate(new Laser(px + 28 + 10, py - 30));
 			}
 			else if (laserCount == 3)
 			{
 				//레이저 세발 쏘기
-				Instantiate(new Laser(px + 31 - 10, py - 23 + 10));
-				Instantiate(new Laser(px + 31, py - 23 - 10));
-				Instantiate(new Laser(px + 31 + 10, py - 23 + 10));
+				Instantiate(new Laser(px + 28 - 10, py - 20 + 10));
+				Instantiate(new Laser(px + 28     , py - 20 - 10));
+				Instantiate(new Laser(px + 28 + 10, py - 20 + 10));
 			}
 
 			fireTimer = 0;  //발사 타이먼..리셋

@@ -12,20 +12,20 @@ Enemy::~Enemy()
 void Enemy::Start()
 {
 	//애니메이션 이미지 로드하기 - 피해없는 애니메이션
-	AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 281, 190, 137);
-	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 281, 190, 137);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 281, 190, 137,     0);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 281, 190, 137,     0);
 
 	//애니메이션 이미지 로드하기 - 경미한 피해를 받은 애니메이션
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 141, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 141, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 141, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 141, 190, 137);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 141, 190, 137,      1);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 141, 190, 137,      1);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 141, 190, 137,      1);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 141, 190, 137,      1);
 
 	//애니메이션 이미지 로드하기 - 심각한 피해를 받은 애니메이션
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 1, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 1, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 1, 190, 137);
-	//AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 1, 190, 137);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 0 , 1, 190, 137,        2);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 1, 190, 137,        2);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 1, 190, 137,        2);
+	AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 1, 190, 137,        2);
 }
 
 void Enemy::Update()
