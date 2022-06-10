@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Player::Player(float px, float py) :Sprite("", "", true, px, py)
+Player::Player(float px, float py) :Animation("", "", true, px, py)
 {
 	this->speed      = 200;
 	this->laserCount = 3;   //아이템을 획득하면..발사갯수 증가
@@ -14,7 +14,21 @@ Player::~Player()
 
 void Player::Start()
 {
-	SetSprite("Asset/팬텀이동2.bmp", 192, 0, 62, 80);
+	///////제자리..애니메이션    - 0  번
+	AddSprite("Asset/팬텀이동2.bmp", 192, 0, 62, 80,      0);
+
+	///////오른쪽 이동..애니메이션 - 1 번 
+	AddSprite("Asset/팬텀이동2.bmp", 256 + 64 * 0 , 0, 62, 80,      1);
+	AddSprite("Asset/팬텀이동2.bmp", 256 + 64 * 1 , 0, 62, 80,      1);
+	AddSprite("Asset/팬텀이동2.bmp", 256 + 64 * 2 , 0, 62, 80,      1);
+
+	///////왼쪽 이동 ...애니메이션 - 2 번
+	AddSprite("Asset/팬텀이동2.bmp", 128 - 64 * 0, 0, 62, 80,       2);
+	AddSprite("Asset/팬텀이동2.bmp", 128 - 64 * 1, 0, 62, 80,       2);
+	AddSprite("Asset/팬텀이동2.bmp", 128 - 64 * 2, 0, 62, 80,       2);
+
+	/////애니메이션 루프 변경////////
+	SetLoop(false);
 }
 
 void Player::Update()
@@ -29,6 +43,7 @@ void Player::Move()  //이동 함수
 	if ( Input::GetKey(KeyCode::LeftArrow) == true )
 	{
 		Translate(-speed * Time::deltaTime, 0);
+		Play(2);
 
 		//x 좌표 가져오기
 		float px = GetPx();
@@ -41,7 +56,8 @@ void Player::Move()  //이동 함수
 
 	if ( Input::GetKey(KeyCode::RightArrow) == true )
 	{
-		Translate(speed * Time::deltaTime, 0);
+		Translate(speed * Time::deltaTime, 0); //오른쪽 이동
+		Play(1);                               //오른쪽 이동 애니메이션
 
 		float px = GetPx();
 
@@ -73,6 +89,12 @@ void Player::Move()  //이동 함수
 		{
 			SetPy(800 - 80 + 7);
 		}
+	}
+
+	///////왼쪽이동과 오른쪽 이동이 아닐때..제자리 애니메이션 실행하기//////
+	if (Input::GetKey(KeyCode::LeftArrow) != true && Input::GetKey(KeyCode::RightArrow) != true)
+	{
+		Play(0);  //제자리 애니메이션 재생
 	}
 }
 
@@ -109,7 +131,7 @@ void Player::Fire()  //발사 함수
 				Instantiate(new Laser(px + 28 + 10, py - 20 + 10));
 			}
 
-			fireTimer = 0;  //발사 타이먼..리셋
+			fireTimer = 0;  //발사 타이머..리셋
 		}
 	}
 }

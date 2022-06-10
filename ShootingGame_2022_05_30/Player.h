@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Sprite.h"
+#include "Animation.h"
 
-class Player : public Sprite
+class Player : public Animation
 {
 private:
 	

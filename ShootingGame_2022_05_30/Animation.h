@@ -17,6 +17,9 @@ private:
 	float animTimer;
 	float animDelay;
 
+	bool  loop;    //애니메이션 반복실행(loop) 결정
+	float speed;   //애니메이션 재생 속도 조절
+
 public:
 	Animation(string tag, string name, bool active, float px, float py);
 	~Animation();
@@ -28,5 +31,8 @@ public:
 
 	//재생중인..애니메이션 클립 변경함수//
 	void Play(int clipId);
+
+	//애니메이션 루프 지정 함수
+	void SetLoop(bool loop);
 };
 
