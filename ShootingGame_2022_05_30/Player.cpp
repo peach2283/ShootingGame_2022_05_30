@@ -29,6 +29,9 @@ void Player::Start()
 
 	/////애니메이션 루프 변경////////
 	SetLoop(false);
+
+	/////애니메이션 속도 변경///////
+	SetSpeed(0.5);
 }
 
 void Player::Update()

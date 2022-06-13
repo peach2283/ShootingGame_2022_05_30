@@ -38,6 +38,11 @@ void Animation::SetLoop(bool loop)
 	this->loop = loop;
 }
 
+void Animation::SetSpeed(float speed)
+{
+	this->speed = speed;
+}
+
 void Animation::Draw()
 {
 	float px = GetPx();

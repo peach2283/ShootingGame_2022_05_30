@@ -26,6 +26,9 @@ void Enemy::Start()
 	AddSprite("Asset/적기.bmp", 1 + 200 * 1 , 1, 190, 137,        2);
 	AddSprite("Asset/적기.bmp", 1 + 200 * 2 , 1, 190, 137,        2);
 	AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 1, 190, 137,        2);
+
+	//충돌체 추가하기
+	AddBoxCollider2D(0, 0, 190, 137);
 }
 
 void Enemy::Update()

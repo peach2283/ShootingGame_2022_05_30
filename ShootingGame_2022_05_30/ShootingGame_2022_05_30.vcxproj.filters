@@ -66,6 +66,9 @@
     <ClInclude Include="Animation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="BoxCollider2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShootingGame_2022_05_30.rc">
@@ -121,6 +124,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider2D.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

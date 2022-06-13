@@ -97,3 +97,8 @@ void GameObject::Destroy(GameObject* obj)
 {
 	ObjectManager::Destroy(obj);
 }
+
+void GameObject::AddBoxCollider2D(float x, float y, float width, float height)
+{
+	this->colliders = BoxCollider2D(x, y, width, height);
+}

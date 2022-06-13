@@ -34,5 +34,9 @@ public:
 
 	//애니메이션 루프 지정 함수
 	void SetLoop(bool loop);
+
+	//애니메이션 속도 지정 함수
+	void SetSpeed(float speed);
+
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "BoxCollider2D.h"
 
 using namespace std;
 
@@ -16,7 +17,9 @@ private:
 	float px;  //position x
 	float py;  //position y
 
-	//기타..추가된 속성들//
+	//Box 충돌체 추가 - BoxCollider2D
+	BoxCollider2D colliders;
+
 public:
 	//생성자, 소멸자//
 	GameObject(string tag, string name, bool active, float px, float py);
@@ -51,5 +54,9 @@ public:
 	//게임 객체 생성 / 제거 함수
 	void Instantiate(GameObject* obj);
 	void Destroy(GameObject* obj);
+
+	//충돌체(Collider)추가 함수
+	void AddBoxCollider2D(float x, float y, float width, float height);
+
 };
 
