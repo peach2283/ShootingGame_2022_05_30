@@ -30,6 +30,9 @@ public:
 	virtual void Update();
 	virtual void Draw();
 
+	//충돌체 그리기 함수//
+	void DebugDraw();
+
 	//게터 함수//
 	string GetTag();
 	string GetName();

@@ -11,5 +11,11 @@ public:
 	BoxCollider2D(float x, float y, float width, float height);
 
 	virtual ~BoxCollider2D();
+
+	//게터
+	void GetBox(float& x, float& y, float& width, float& height);
+
+	//이동함수
+	void Translate(float x, float y);
 };
 

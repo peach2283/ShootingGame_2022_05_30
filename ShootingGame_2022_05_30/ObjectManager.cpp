@@ -35,6 +35,9 @@ void ObjectManager::Draw()
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		gameObjects[i]->Draw();
+
+		//게임오브젝트 디버그용 그리기 함수//
+		gameObjects[i]->DebugDraw();
 	}
 }
 

@@ -32,6 +32,9 @@ void Player::Start()
 
 	/////애니메이션 속도 변경///////
 	SetSpeed(0.5);
+
+	//플레이어 충돌체 추가하기/////
+	AddBoxCollider2D(0, 0, 62, 80);
 }
 
 void Player::Update()

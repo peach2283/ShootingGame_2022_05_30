@@ -23,6 +23,23 @@ void GameObject::Update()
 void GameObject::Draw()
 {}
 
+void GameObject::DebugDraw()
+{
+	//Box 충돌체..화면에 그리기//
+	float x, y, width, height;
+
+	colliders.GetBox(x, y, width, height);
+
+	//사각형 꼭지점 계산하기
+	int x0 = x;
+	int y0 = y;
+
+	int x1 = x + width;
+	int y1 = y + height;
+
+	DrawRect(x0, y0, x1, y1, 255, 0, 0);
+}
+
 //게터 함수//
 string GameObject::GetTag()
 {
@@ -73,19 +90,34 @@ void GameObject::SetActive(bool active)
 
 void GameObject::SetPx(float px)
 {
+	float dx = px - this->px;  //SetPx에 의해서..변경되는 x 좌표거리
+
+	//게임오브젝트..좌표 변경
 	this->px = px;
+
+	//충돌체에..좌표 변경량..만큼..이동시키기
+	colliders.Translate(dx, 0);
 }
 
 void GameObject::SetPy(float py)
 {
+	float dy = py - this->py;
+
 	this->py = py;
+
+	//충돌체에..좌표 변경량..만큼..이동시키기
+	colliders.Translate(0, dy);
 }
 
 //게임오브젝트...이동 함수
 void GameObject::Translate(float x, float y)
 {
+	//게임 오브젝트..이동하기
 	px = px + x;
 	py = py + y;
+
+	//충돌체..이동하기
+	colliders.Translate(x, y);
 }
 
 void GameObject::Instantiate(GameObject* obj)
@@ -100,5 +132,5 @@ void GameObject::Destroy(GameObject* obj)
 
 void GameObject::AddBoxCollider2D(float x, float y, float width, float height)
 {
-	this->colliders = BoxCollider2D(x, y, width, height);
+	this->colliders = BoxCollider2D( px + x, py + y, width, height);
 }

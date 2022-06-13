@@ -20,3 +20,18 @@ BoxCollider2D::BoxCollider2D(float x, float y, float width, float height)
 
 BoxCollider2D::~BoxCollider2D()
 {}
+
+void BoxCollider2D::GetBox(float& x, float& y, float& width, float& height)
+{
+	x = this->x;
+	y = this->y;
+
+	width  = this->width;
+	height = this->height;
+}
+
+void BoxCollider2D::Translate(float x, float y)
+{
+	this->x = this->x + x;
+	this->y = this->y + y;
+}
