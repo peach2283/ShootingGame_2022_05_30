@@ -139,3 +139,6 @@ BoxCollider2D GameObject::GetColliders()
 {
 	return colliders;
 }
+
+void GameObject::OnTriggerStay2D()
+{}

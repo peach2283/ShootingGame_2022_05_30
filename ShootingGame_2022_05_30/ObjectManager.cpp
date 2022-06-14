@@ -41,7 +41,32 @@ void ObjectManager::CheckCollision()
 				BoxCollider2D coli = obji->GetColliders();
 				BoxCollider2D colj = objj->GetColliders();
 
-				cout << "(" << tagi << " ,  " << tagj << ") ";
+				//coli, colj 좌표 가져오기//
+				float x, y, width, height;
+
+				float a0, b0, a1, b1;  //coli의 좌표
+				float x0, y0, x1, y1;  //colj의 좌표
+
+				coli.GetBox(x, y, width, height);
+				
+				a0 = x;
+				b0 = y;
+				a1 = x + width;
+				b1 = y + height;
+
+				colj.GetBox(x, y, width, height);
+
+				x0 = x;
+				y0 = y;
+				x1 = x + width;
+				y1 = y + height;
+
+				if (y0 < b1 && y1 > b0 && x1 > a0 && a1 > x0)
+				{
+					obji->OnTriggerStay2D();  //obji에 충돌 정보 알림
+					objj->OnTriggerStay2D();  //objj에 충돌 정보 알림
+					
+				}
 			}
 		}
 

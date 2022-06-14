@@ -4,6 +4,7 @@ Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py)
 {
 	this->speed = 100;
 	this->state = State::left;
+	this->hp    = 100;
 }
 
 Enemy::~Enemy()
@@ -59,4 +60,9 @@ void Enemy::Update()
 		break;
 	}
 	*************************/
+}
+
+void Enemy::OnTriggerStay2D()
+{
+	cout << "적기가 충돌함" << endl;
 }

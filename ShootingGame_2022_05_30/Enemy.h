@@ -10,11 +10,15 @@ private:
 	float speed;
 	State state;
 
+	float hp;
+
 public:
 	Enemy(float px, float py);
 	~Enemy();
 
 	void Start();
 	void Update();
+
+	void OnTriggerStay2D();
 };
 

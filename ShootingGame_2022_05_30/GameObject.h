@@ -64,5 +64,8 @@ public:
 	//충돌 박스 반환함수
 	BoxCollider2D GetColliders();
 
+	//충돌 이벤트 함수
+	virtual void OnTriggerStay2D();
+
 };
 
