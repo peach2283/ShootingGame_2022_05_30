@@ -37,7 +37,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::Init();                      //델타타임 초기화
 
     //게임오브젝트들(배경, 플레이어) 추가하기
-    ObjectManager::Instantiate(new GameBG(0     ,   0));
+    //ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
    
     //적기 추가하기..테스트
@@ -64,13 +64,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         
         //게임 동작시키는 코드
-        Clear(255, 0, 0);    //화면 클리어
+        Clear(0, 0, 0);    //화면 클리어
 
         Time::Update();     //델타타임 업데이트
         Input::Update();    //키 입력 상태 업데이트
 
-        ObjectManager::Update();  //게임객체 업데이트
-        ObjectManager::Draw();    //게임객체 그리기
+        ObjectManager::CheckCollision();   //목록의 객체들의 쌍을 만들어서..충돌했는지를 검사
+        ObjectManager::Update();           //게임객체 업데이트
+        ObjectManager::Draw();             //게임객체 그리기
 
         Render();  //화면 출력
     }

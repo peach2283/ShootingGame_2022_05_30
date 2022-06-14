@@ -22,6 +22,36 @@ void ObjectManager::Destroy(GameObject* o)
 	}
 }
 
+void ObjectManager::CheckCollision()
+{
+	cout << "---------------------------------" << endl;
+
+	for (int i = 0; i < gameObjects.size(); i++)
+	{
+		for (int j = 0; j < gameObjects.size(); j++)
+		{
+			if (i > j)
+			{
+				GameObject* obji = gameObjects[i];  //적기
+				GameObject* objj = gameObjects[j];  //플레이어
+
+				string tagi = obji->GetTag();
+				string tagj = objj->GetTag();
+
+				BoxCollider2D coli = obji->GetColliders();
+				BoxCollider2D colj = objj->GetColliders();
+
+				cout << "(" << tagi << " ,  " << tagj << ") ";
+			}
+		}
+
+		cout << endl;
+	}
+
+	cout << endl;
+	cout << "---------------------------------" << endl;
+}
+
 void ObjectManager::Update()
 {
 	for (int i = 0; i < gameObjects.size(); i++)

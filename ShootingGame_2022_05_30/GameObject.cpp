@@ -134,3 +134,8 @@ void GameObject::AddBoxCollider2D(float x, float y, float width, float height)
 {
 	this->colliders = BoxCollider2D( px + x, py + y, width, height);
 }
+
+BoxCollider2D GameObject::GetColliders()
+{
+	return colliders;
+}

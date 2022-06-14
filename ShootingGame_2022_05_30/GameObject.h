@@ -61,5 +61,8 @@ public:
 	//충돌체(Collider)추가 함수
 	void AddBoxCollider2D(float x, float y, float width, float height);
 
+	//충돌 박스 반환함수
+	BoxCollider2D GetColliders();
+
 };
 

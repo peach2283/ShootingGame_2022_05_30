@@ -23,5 +23,8 @@ public:
 
 	//게임 목록 전체 Clear 함수
 	static void Clear();
+
+	//충돌검사 함수
+	static void CheckCollision();
 };
 
