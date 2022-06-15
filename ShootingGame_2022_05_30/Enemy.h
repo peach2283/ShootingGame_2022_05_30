@@ -19,6 +19,6 @@ public:
 	void Start();
 	void Update();
 
-	void OnTriggerStay2D();
+	void OnTriggerStay2D(Collider2D collision);
 };
 

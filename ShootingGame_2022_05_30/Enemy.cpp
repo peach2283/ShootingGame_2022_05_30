@@ -62,7 +62,19 @@ void Enemy::Update()
 	*************************/
 }
 
-void Enemy::OnTriggerStay2D()
+void Enemy::OnTriggerStay2D(Collider2D collision)
 {
-	cout << "적기가 충돌함" << endl;
+	string tag = collision.tag;
+
+	if (tag == "레이저")
+	{
+		//레이저 피해 적용하기
+		hp = hp - 10;
+
+		cout << "적기 체력 " << hp << endl;
+	}
+	else if (tag == "플레이어")
+	{
+	
+	}
 }

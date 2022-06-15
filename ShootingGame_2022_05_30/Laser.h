@@ -15,5 +15,8 @@ public:
 
 	void Start();
 	void Update();
+
+	//충돌 이벤트 ... 오바라이딩
+	void OnTriggerStay2D(Collider2D collision);
 };
 

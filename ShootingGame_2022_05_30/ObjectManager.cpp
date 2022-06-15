@@ -1,4 +1,4 @@
-#include "ObjectManager.h"
+#include "ShootingGame.h"
 
 vector<GameObject*> ObjectManager::gameObjects;
 
@@ -24,8 +24,6 @@ void ObjectManager::Destroy(GameObject* o)
 
 void ObjectManager::CheckCollision()
 {
-	cout << "---------------------------------" << endl;
-
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		for (int j = 0; j < gameObjects.size(); j++)
@@ -63,18 +61,19 @@ void ObjectManager::CheckCollision()
 
 				if (y0 < b1 && y1 > b0 && x1 > a0 && a1 > x0)
 				{
-					obji->OnTriggerStay2D();  //obji에 충돌 정보 알림
-					objj->OnTriggerStay2D();  //objj에 충돌 정보 알림
-					
+					//충돌 정보를...Collider2D 클래스에 넣어서..매개변수로..전달해라!!
+					Collider2D col2Di;
+					col2Di.tag = tagj;  //obji 와 충돌함 ..objj의 태그 정보
+
+					Collider2D col2Dj;
+					col2Dj.tag = tagi;  //objj 와 충돌한.. obji의 태그 정보
+
+					obji->OnTriggerStay2D(col2Di);  //obji가 objj 와 충돌 정보 알림
+					objj->OnTriggerStay2D(col2Dj);  //objj가 obji 와 충돌 정보 알림					
 				}
 			}
 		}
-
-		cout << endl;
 	}
-
-	cout << endl;
-	cout << "---------------------------------" << endl;
 }
 
 void ObjectManager::Update()

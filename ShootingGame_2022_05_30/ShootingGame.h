@@ -12,3 +12,4 @@
 #include "Enemy.h"
 #include "Animation.h"
 #include "BoxCollider2D.h"
+#include "Collider2D.h"

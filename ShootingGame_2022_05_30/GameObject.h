@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "BoxCollider2D.h"
+#include "Collider2D.h"
 
 using namespace std;
 
@@ -65,7 +66,6 @@ public:
 	BoxCollider2D GetColliders();
 
 	//충돌 이벤트 함수
-	virtual void OnTriggerStay2D();
-
+	virtual void OnTriggerStay2D(Collider2D collision);
 };
 

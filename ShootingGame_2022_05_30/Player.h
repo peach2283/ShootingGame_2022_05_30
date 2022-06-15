@@ -21,4 +21,7 @@ public:
 
 	void Move();  //이동 함수
 	void Fire();  //발사 함수
+
+	//충돌 이벤트 함수...오바라이딩
+	void OnTriggerStay2D(Collider2D collision);
 };
