@@ -59,6 +59,9 @@ void Animation::Draw()
 
 		if ( index >= sprites[ clip ].size() )  //마지막..이미지가 나옴
 		{
+			//애니메이션의..마지막..이미지가 나왔음을...알려주는 이벤트 만들기//
+			OnAnimationEnd();
+
 			if (loop == true)  //루프를 할 경우
 			{
 				index = 0; //처음 이미지로..감
@@ -70,4 +73,8 @@ void Animation::Draw()
 
 		animTimer = 0;  //타이머..리셋
 	}
+}
+
+void Animation::OnAnimationEnd()
+{
 }

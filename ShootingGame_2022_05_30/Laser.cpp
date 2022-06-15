@@ -36,6 +36,12 @@ void Laser::OnTriggerStay2D(Collider2D collision)
 
 	if (tag == "적기")
 	{
+		//레이저 폭발 효과
+		float px, py;
+
+		GetPosition(px, py);
+		Instantiate(new LaserExp(px-14, py-10));
+
 		//레이저 제거하기
 		Destroy(this);
 	}

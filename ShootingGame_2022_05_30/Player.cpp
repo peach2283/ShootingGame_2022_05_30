@@ -3,7 +3,7 @@
 Player::Player(float px, float py) :Animation("플레이어", "", true, px, py)
 {
 	this->speed      = 200;
-	this->laserCount = 3;   //아이템을 획득하면..발사갯수 증가
+	this->laserCount = 1;   //아이템을 획득하면..발사갯수 증가
 
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //발사간 지연시간

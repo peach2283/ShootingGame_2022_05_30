@@ -38,5 +38,7 @@ public:
 	//애니메이션 속도 지정 함수
 	void SetSpeed(float speed);
 
+	//애니메이션 마지막 그림 나옴을..알려주는..부모 가상함수
+	virtual void OnAnimationEnd();
 };
 
