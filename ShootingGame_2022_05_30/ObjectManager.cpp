@@ -29,9 +29,10 @@ void ObjectManager::Destroy(GameObject* o)
 
 void ObjectManager::CheckCollision()
 {
-	for (int i = 0; i < gameObjects.size(); i++)     //적기, 레이저1, 레이저2, 레이저3
+	/*********************************************************************************
+	for (int i = 0; i < gameObjects.size(); i++)     
 	{
-		for (int j = 0; j < gameObjects.size(); j++) //적기, 레이저1, 레이저2, 레이저3
+		for (int j = 0; j < gameObjects.size(); j++) 
 		{
 			if (i > j)
 			{
@@ -79,6 +80,7 @@ void ObjectManager::CheckCollision()
 			}
 		}
 	}
+	********************************************************************************************/
 }
 
 void ObjectManager::Update()

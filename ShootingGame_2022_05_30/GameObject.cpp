@@ -30,16 +30,19 @@ void GameObject::DebugDraw()
 	//Box 충돌체..화면에 그리기//
 	float x, y, width, height;
 
-	colliders.GetBox(x, y, width, height);
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		colliders[i].GetBox(x, y, width, height);
 
-	//사각형 꼭지점 계산하기
-	int x0 = x;
-	int y0 = y;
+		//사각형 꼭지점 계산하기
+		int x0 = x;
+		int y0 = y;
 
-	int x1 = x + width;
-	int y1 = y + height;
+		int x1 = x + width;
+		int y1 = y + height;
 
-	DrawRect(x0, y0, x1, y1, 255, 0, 0);
+		DrawRect(x0, y0, x1, y1, 255, 0, 0);
+	}
 }
 
 //게터 함수//
@@ -98,7 +101,10 @@ void GameObject::SetPx(float px)
 	this->px = px;
 
 	//충돌체에..좌표 변경량..만큼..이동시키기
-	colliders.Translate(dx, 0);
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		colliders[i].Translate(dx, 0);
+	}
 }
 
 void GameObject::SetPy(float py)
@@ -108,7 +114,10 @@ void GameObject::SetPy(float py)
 	this->py = py;
 
 	//충돌체에..좌표 변경량..만큼..이동시키기
-	colliders.Translate(0, dy);
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		colliders[i].Translate(0, dy);
+	}
 }
 
 //게임오브젝트...이동 함수
@@ -119,7 +128,10 @@ void GameObject::Translate(float x, float y)
 	py = py + y;
 
 	//충돌체..이동하기
-	colliders.Translate(x, y);
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		colliders[i].Translate(x, y);
+	}
 }
 
 void GameObject::Instantiate(GameObject* obj)
@@ -134,10 +146,10 @@ void GameObject::Destroy(GameObject* obj)
 
 void GameObject::AddBoxCollider2D(float x, float y, float width, float height)
 {
-	this->colliders = BoxCollider2D( px + x, py + y, width, height);
+	this->colliders.push_back( BoxCollider2D( px + x, py + y, width, height) );
 }
 
-BoxCollider2D GameObject::GetColliders()
+vector<BoxCollider2D> GameObject::GetColliders()
 {
 	return colliders;
 }

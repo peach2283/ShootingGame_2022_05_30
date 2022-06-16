@@ -34,7 +34,10 @@ void Player::Start()
 	SetSpeed(0.5);
 
 	//플레이어 충돌체 추가하기/////
-	AddBoxCollider2D(0, 0, 62, 80);
+	//AddBoxCollider2D(0, 0, 62, 80);
+
+	AddBoxCollider2D(22, 5, 18, 65);  //가운데 몸통..충돌박스
+	AddBoxCollider2D(5, 40, 52, 15);  //가운데 날개..충돌박스
 }
 
 void Player::Update()

@@ -29,7 +29,10 @@ void Enemy::Start()
 	AddSprite("Asset/적기.bmp", 1 + 200 * 3 , 1, 190, 137,        2);
 
 	//충돌체 추가하기
-	AddBoxCollider2D(0, 0, 190, 137);
+	//AddBoxCollider2D(0, 0, 190, 137);
+	AddBoxCollider2D(85 , 25 , 20 , 110);  //가운데..몸통 충돌 박스
+	AddBoxCollider2D(0  , 85 , 190,  20);  //가운데..날개 충돌 박스
+	AddBoxCollider2D(65 , 10 , 60 ,  15);  //꼬리  ..날개 충돌 박스
 }
 
 void Enemy::Update()

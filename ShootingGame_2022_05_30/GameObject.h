@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "BoxCollider2D.h"
 #include "Collider2D.h"
 
@@ -22,7 +23,7 @@ private:
 	float py;  //position y
 
 	//Box 충돌체 추가 - BoxCollider2D
-	BoxCollider2D colliders;
+	vector<BoxCollider2D> colliders;
 
 public:
 	//생성자, 소멸자//
@@ -66,7 +67,7 @@ public:
 	void AddBoxCollider2D(float x, float y, float width, float height);
 
 	//충돌 박스 반환함수
-	BoxCollider2D GetColliders();
+	vector<BoxCollider2D> GetColliders();
 
 	//충돌 이벤트 함수
 	virtual void OnTriggerStay2D(Collider2D collision);
