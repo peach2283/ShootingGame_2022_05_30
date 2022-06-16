@@ -70,6 +70,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         Input::Update();    //키 입력 상태 업데이트
 
         ObjectManager::CheckCollision();   //목록의 객체들의 쌍을 만들어서..충돌했는지를 검사
+        ObjectManager::ClearDeadObject();  //목록에서 삭제대상 객체들을..모두 제거하기
+
         ObjectManager::Update();           //게임객체 업데이트
         ObjectManager::Draw();             //게임객체 그리기
 

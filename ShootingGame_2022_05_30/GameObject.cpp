@@ -8,6 +8,8 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 	this->px = px;
 	this->py = py;
+
+	this->isDead = false; //생성자에서는 삭제대상 아님으로 표시
 }
 
 GameObject::~GameObject()
@@ -142,3 +144,13 @@ BoxCollider2D GameObject::GetColliders()
 
 void GameObject::OnTriggerStay2D(Collider2D collision)
 {}
+
+void GameObject::SetDead()
+{
+	this->isDead = true;  //삭제 대상으로..표시함
+}
+
+bool GameObject::GetDead()
+{
+	return isDead;
+}

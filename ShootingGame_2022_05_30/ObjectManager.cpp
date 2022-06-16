@@ -10,6 +10,10 @@ void ObjectManager::Instantiate(GameObject* o)
 
 void ObjectManager::Destroy(GameObject* o)
 {
+	//삭제..대상으로..대기중이라는...표시//
+	o->SetDead();  
+
+	/***********************************************************
 	for (int i = 0  ; i < gameObjects.size()  ; i++)
 	{
 		if (gameObjects[i] == o)
@@ -20,13 +24,14 @@ void ObjectManager::Destroy(GameObject* o)
 			i--;
 		}
 	}
+	*************************************************************/
 }
 
 void ObjectManager::CheckCollision()
 {
-	for (int i = 0; i < gameObjects.size(); i++)
+	for (int i = 0; i < gameObjects.size(); i++)     //적기, 레이저1, 레이저2, 레이저3
 	{
-		for (int j = 0; j < gameObjects.size(); j++)
+		for (int j = 0; j < gameObjects.size(); j++) //적기, 레이저1, 레이저2, 레이저3
 		{
 			if (i > j)
 			{
@@ -104,4 +109,22 @@ void ObjectManager::Clear()
 	}
 
 	gameObjects.clear();
+}
+
+void ObjectManager::ClearDeadObject()
+{
+	//목록 사용이 모두 끝난 후...삭제 대기인 객체를...삭제함//
+	for (int i = 0; i < gameObjects.size(); i++)
+	{
+		//삭제 대상으로..표시된..객체를 찾아서..삭제함//
+		if (gameObjects[i]->GetDead() == true)
+		{
+			GameObject* o = gameObjects[i]; //delete를 위해서..포인터 저장하기
+
+			gameObjects.erase(gameObjects.begin() + i);  //gameObjects stl vector에서 i 번째 공간삭제하기
+
+			delete o;  //객체 삭제하기
+			i--;
+		}
+	}
 }

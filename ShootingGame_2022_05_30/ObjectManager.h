@@ -26,5 +26,8 @@ public:
 
 	//충돌검사 함수
 	static void CheckCollision();
+
+	//삭제대상 객체 제거 함수
+	static void ClearDeadObject();
 };
 

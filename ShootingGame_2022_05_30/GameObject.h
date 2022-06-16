@@ -14,6 +14,9 @@ private:
 	string name;
 	bool   active;
 
+	//삭제 대상인지를..표시하는 변수
+	bool isDead;  //true - 삭제대상임, false - 삭제대상아님
+
 	//트랜스폼(Position, Roatation, Scale)//
 	float px;  //position x
 	float py;  //position y
@@ -67,5 +70,9 @@ public:
 
 	//충돌 이벤트 함수
 	virtual void OnTriggerStay2D(Collider2D collision);
+
+	//삭제 대상으로..표시하는/가져오는 함수//
+	void SetDead();  //삭제 대상표시 
+	bool GetDead();  //삭제 표시 가져오기
 };
 
