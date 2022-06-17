@@ -12,10 +12,18 @@ void ShipExp::Start()
 	{
 		for (int x = 0; x < 4; x++)
 		{
-			AddSprite("Asset/폭발효과.bmp", 0 + 161*x, 7482 + 161*x, 160, 160, 0);
+			AddSprite("Asset/폭발효과.bmp", 0 + 161*x, 7482 + 161*y, 160, 160, 0);
 		}
 	}
+
+	//애니메이션 속도 
+	SetSpeed(1.5);
 }
 
 void ShipExp::Update()
 {}
+
+void ShipExp::OnAnimationEnd()
+{
+	Destroy(this);
+}

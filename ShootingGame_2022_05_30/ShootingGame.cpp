@@ -44,7 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new Enemy(240-95, 100));
 
     //레이저 폭발 테스트하기
-    //ObjectManager::Instantiate(new LaserExp(100, 100));
+    //ObjectManager::Instantiate(new ShipExp(100,100));
 
     MSG msg;
 

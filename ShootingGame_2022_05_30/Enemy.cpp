@@ -5,6 +5,9 @@ Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py)
 	this->speed = 100;
 	this->state = State::left;
 	this->hp    = 100;
+
+	this->fireTimer = 0;
+	this->fireDelay = 0.5;
 }
 
 Enemy::~Enemy()
@@ -37,6 +40,7 @@ void Enemy::Start()
 
 void Enemy::Update()
 {	
+	//적기 이동 스테이트머신//
 	switch (state)
 	{	
 		case State::left:
@@ -61,6 +65,19 @@ void Enemy::Update()
 		}
 		break;
 	}	
+
+	//블릿 발사하기//
+	fireTimer = fireTimer + Time::deltaTime;
+
+	if (fireTimer >= fireDelay)
+	{
+		float px, py;
+
+		GetPosition(px, py);
+		Instantiate(new Bullet1(px+87, py + 137));
+
+		fireTimer = 0;
+	}
 }
 
 void Enemy::OnTriggerStay2D(Collider2D collision)
@@ -72,12 +89,14 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 		//레이저 피해 적용하기
 		hp = hp - 10;
 
-		cout << "적기 체력 " << hp << endl;
-
 		//체력이 0 이되면..적기 폭발 / 제거//
 		if (hp <= 0)
 		{
 			//적기 폭발 효과
+			float px, py;
+
+			GetPosition(px, py);
+			Instantiate(new ShipExp(px+15, py));
 
 			//적기 제거
 			Destroy(this);

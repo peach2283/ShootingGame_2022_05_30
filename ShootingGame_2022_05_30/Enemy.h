@@ -12,6 +12,9 @@ private:
 
 	float hp;
 
+	float fireTimer;
+	float fireDelay;
+
 public:
 	Enemy(float px, float py);
 	~Enemy();
