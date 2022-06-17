@@ -14,7 +14,16 @@ Animation::Animation(string tag, string name, bool active, float px, float py)
 }
 
 Animation::~Animation()
-{}
+{
+	//로드된..애니메이션 이미지들..메모리 제거//
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < sprites[i].size(); j++)
+		{
+			delete[] sprites[i][j].argb;  //i 번째 배열의...j 번째 vector 요소(이미지)의 메모리 제거
+		}
+	}
+}
 
 void Animation::AddSprite(const char* fileName, int x, int y, int width, int height, int clipId)
 {

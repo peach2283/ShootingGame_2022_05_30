@@ -29,7 +29,7 @@ void ObjectManager::Destroy(GameObject* o)
 
 void ObjectManager::CheckCollision()
 {
-	/*********************************************************************************
+	
 	for (int i = 0; i < gameObjects.size(); i++)     
 	{
 		for (int j = 0; j < gameObjects.size(); j++) 
@@ -42,45 +42,52 @@ void ObjectManager::CheckCollision()
 				string tagi = obji->GetTag();
 				string tagj = objj->GetTag();
 
-				BoxCollider2D coli = obji->GetColliders();
-				BoxCollider2D colj = objj->GetColliders();
+				vector<BoxCollider2D> coli = obji->GetColliders();
+				vector<BoxCollider2D> colj = objj->GetColliders();
 
-				//coli, colj 좌표 가져오기//
-				float x, y, width, height;
-
-				float a0, b0, a1, b1;  //coli의 좌표
-				float x0, y0, x1, y1;  //colj의 좌표
-
-				coli.GetBox(x, y, width, height);
-				
-				a0 = x;
-				b0 = y;
-				a1 = x + width;
-				b1 = y + height;
-
-				colj.GetBox(x, y, width, height);
-
-				x0 = x;
-				y0 = y;
-				x1 = x + width;
-				y1 = y + height;
-
-				if (y0 < b1 && y1 > b0 && x1 > a0 && a1 > x0)
+				for (int ii = 0; ii < coli.size(); ii++)  //coli의 박스들..반복
 				{
-					//충돌 정보를...Collider2D 클래스에 넣어서..매개변수로..전달해라!!
-					Collider2D col2Di;
-					col2Di.tag = tagj;  //obji 와 충돌함 ..objj의 태그 정보
+					for (int jj = 0; jj < colj.size(); jj++)  //colj의 박스들..반복
+					{
+						//coli, colj 좌표 가져오기//
+						float x, y, width, height;
 
-					Collider2D col2Dj;
-					col2Dj.tag = tagi;  //objj 와 충돌한.. obji의 태그 정보
+						float a0, b0, a1, b1;  //coli의 좌표
+						float x0, y0, x1, y1;  //colj의 좌표
 
-					obji->OnTriggerStay2D(col2Di);  //obji가 objj 와 충돌 정보 알림
-					objj->OnTriggerStay2D(col2Dj);  //objj가 obji 와 충돌 정보 알림					
+						coli[ii].GetBox(x, y, width, height);
+
+						a0 = x;
+						b0 = y;
+						a1 = x + width;
+						b1 = y + height;
+
+						colj[jj].GetBox(x, y, width, height);
+
+						x0 = x;
+						y0 = y;
+						x1 = x + width;
+						y1 = y + height;
+
+						if (y0 < b1 && y1 > b0 && x1 > a0 && a1 > x0)
+						{
+							//충돌 정보를...Collider2D 클래스에 넣어서..매개변수로..전달해라!!
+							Collider2D col2Di;
+							col2Di.tag = tagj;  //obji 와 충돌함 ..objj의 태그 정보
+
+							Collider2D col2Dj;
+							col2Dj.tag = tagi;  //objj 와 충돌한.. obji의 태그 정보
+
+							obji->OnTriggerStay2D(col2Di);  //obji가 objj 와 충돌 정보 알림
+							objj->OnTriggerStay2D(col2Dj);  //objj가 obji 와 충돌 정보 알림					
+						}
+
+					}
 				}
+	
 			}
 		}
-	}
-	********************************************************************************************/
+	}	
 }
 
 void ObjectManager::Update()

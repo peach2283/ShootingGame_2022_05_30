@@ -14,3 +14,4 @@
 #include "BoxCollider2D.h"
 #include "Collider2D.h"
 #include "LaserExp.h"
+#include "ShipExp.h"

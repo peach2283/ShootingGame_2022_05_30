@@ -36,8 +36,7 @@ void Enemy::Start()
 }
 
 void Enemy::Update()
-{
-	/**********************
+{	
 	switch (state)
 	{	
 		case State::left:
@@ -61,8 +60,7 @@ void Enemy::Update()
 			}
 		}
 		break;
-	}
-	*************************/
+	}	
 }
 
 void Enemy::OnTriggerStay2D(Collider2D collision)
@@ -75,6 +73,15 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 		hp = hp - 10;
 
 		cout << "적기 체력 " << hp << endl;
+
+		//체력이 0 이되면..적기 폭발 / 제거//
+		if (hp <= 0)
+		{
+			//적기 폭발 효과
+
+			//적기 제거
+			Destroy(this);
+		}
 	}
 	else if (tag == "플레이어")
 	{
