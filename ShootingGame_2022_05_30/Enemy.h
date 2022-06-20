@@ -4,7 +4,7 @@
 
 class Enemy : public Animation
 {
-	enum class State { left = 0, right = 1 };
+	enum class State { left = 0, right = 1, fall = 2 };
 
 private:
 	float speed;

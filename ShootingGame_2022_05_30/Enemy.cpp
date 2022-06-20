@@ -64,6 +64,12 @@ void Enemy::Update()
 			}
 		}
 		break;
+
+		case State::fall:
+		{
+			Translate(0, speed * Time::deltaTime);
+		}
+		break;
 	}	
 
 	//블릿 발사하기//
@@ -87,10 +93,26 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 	if (tag == "레이저")
 	{
 		//레이저 피해 적용하기
-		hp = hp - 10;
+		hp = hp - 5;
 
-		//체력이 0 이되면..적기 폭발 / 제거//
-		if (hp <= 0)
+		if (80 <= hp && hp <= 100)  //피해 없음
+		{
+		
+		}
+		else if (50 <= hp && hp < 80)  //경미한 피해
+		{
+			//1 번 애니메이션 변경
+			Play(1);
+		}
+		else if (0 < hp && hp < 50)   //심각한 피해
+		{
+			//2 번 애니메이션 변경
+			Play(2);
+
+			//적기 추락(fall)상태로..전이하기
+			state = State::fall;
+
+		}else  if (hp <= 0)           //적기 폭발
 		{
 			//적기 폭발 효과
 			float px, py;
