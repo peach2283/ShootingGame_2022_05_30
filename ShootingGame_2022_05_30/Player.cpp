@@ -2,6 +2,7 @@
 
 Player::Player(float px, float py) :Animation("플레이어", "", true, px, py)
 {
+	this->hp		 = 100;
 	this->speed      = 200;
 	this->laserCount = 1;   //아이템을 획득하면..발사갯수 증가
 
@@ -149,7 +150,24 @@ void Player::OnTriggerStay2D(Collider2D collision)
 {
 	string tag = collision.tag;
 
-	if (tag == "적기")
+	if (tag == "총알1")
+	{
+		//적기 총알1 충돌 피해
+		hp = hp - 10;
+
+		cout << "플레이어 체력 " << hp << endl;
+
+		if (hp <= 0)
+		{
+			//플레이어 폭발
+
+			//플레이어 제거
+			Destroy(this);
+
+			//플레이어 리스폰 [참고.. 남은 게임수에 따라서..]
+		}
+
+	}else if (tag == "적기")
 	{
 		
 	}

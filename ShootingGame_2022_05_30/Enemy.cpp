@@ -2,8 +2,12 @@
 
 Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py)
 {
-	this->speed = 100;
-	this->state = State::left;
+	this->moveSpeed = 100;
+	this->fallSpeed = 300;
+
+	this->lifeTime = 5;
+
+	this->state = State::appear;  //등장상태 부터..시작(상태 초기화)
 	this->hp    = 100;
 
 	this->fireTimer = 0;
@@ -43,9 +47,21 @@ void Enemy::Update()
 	//적기 이동 스테이트머신//
 	switch (state)
 	{	
+		case State::appear:
+		{
+			Translate(0, moveSpeed * Time::deltaTime);  //아래로 등장
+
+			//좌우..이동 상태전이하기
+			if (GetPy() >= 100)
+			{
+				state = State::left;
+			}
+		}
+		break;
+
 		case State::left:
 		{
-			Translate(-speed * Time::deltaTime, 0); //왼쪽이동
+			Translate(-moveSpeed * Time::deltaTime, 0); //왼쪽이동
 
 			if (GetPx() <= 0) //성태전이 조건
 			{
@@ -56,7 +72,7 @@ void Enemy::Update()
 
 		case State::right:
 		{
-			Translate(speed * Time::deltaTime, 0);  //오른쪽 이동
+			Translate(moveSpeed * Time::deltaTime, 0);  //오른쪽 이동
 
 			if (GetPx() >= 480 - 190)
 			{
@@ -67,7 +83,16 @@ void Enemy::Update()
 
 		case State::fall:
 		{
-			Translate(0, speed * Time::deltaTime);
+			//추락을 위한 이동
+			Translate(0, fallSpeed * Time::deltaTime);
+
+			//추락 라이프 타임
+			lifeTime = lifeTime - Time::deltaTime;
+
+			if (lifeTime <= 0)
+			{
+				Destroy(this);
+			}
 		}
 		break;
 	}	
@@ -114,18 +139,23 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 
 		}else  if (hp <= 0)           //적기 폭발
 		{
-			//적기 폭발 효과
-			float px, py;
-
-			GetPosition(px, py);
-			Instantiate(new ShipExp(px+15, py));
-
-			//적기 제거
-			Destroy(this);
+			Explode();
 		}
 	}
 	else if (tag == "플레이어")
 	{
-	
+		Explode();
 	}
+}
+
+void Enemy::Explode()
+{
+	//적기 폭발 효과
+	float px, py;
+
+	GetPosition(px, py);
+	Instantiate(new ShipExp(px + 15, py));
+
+	//적기 제거
+	Destroy(this);
 }
