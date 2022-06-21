@@ -148,6 +148,7 @@ void Player::Fire()  //발사 함수
 
 void Player::OnTriggerStay2D(Collider2D collision)
 {
+	/****************************************
 	string tag = collision.tag;
 
 	if (tag == "총알1")
@@ -164,6 +165,7 @@ void Player::OnTriggerStay2D(Collider2D collision)
 	{
 		Explode();
 	}
+	*****************************************/
 }
 
 void Player::Explode()
