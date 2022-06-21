@@ -15,6 +15,11 @@ void BulletExp::Start()
 			AddSprite("Asset/ÃÑ¾ËÆø¹ß.bmp", x * 40, y * 40, 40, 40,        0);
 		}
 	}
+
+	AddSprite("Asset/ÃÑ¾ËÆø¹ß.bmp", 0 * 40, 3 * 40, 40, 40, 0);
+	AddSprite("Asset/ÃÑ¾ËÆø¹ß.bmp", 1 * 40, 3 * 40, 40, 40, 0);
+
+	SetSpeed(2);
 }
 
 void BulletExp::Update()

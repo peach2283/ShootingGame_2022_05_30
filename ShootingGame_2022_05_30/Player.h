@@ -25,4 +25,7 @@ public:
 
 	//충돌 이벤트 함수...오바라이딩
 	void OnTriggerStay2D(Collider2D collision);
+
+	//플레이어 폭발제거 함수
+	void Explode();
 };

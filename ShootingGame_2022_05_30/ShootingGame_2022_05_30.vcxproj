@@ -155,6 +155,7 @@
     <ClInclude Include="Collider2D.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameBG.h" />
     <ClInclude Include="GameObject.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="GameBG.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphic.cpp" />

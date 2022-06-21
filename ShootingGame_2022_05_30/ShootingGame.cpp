@@ -40,6 +40,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
    
+    //적기 스포너 객체 추가하기
+    ObjectManager::Instantiate(new EnemySpawner(100, 100));
+
     //적기 추가하기..테스트
     ObjectManager::Instantiate(new Enemy(240-95, -200));
 

@@ -155,20 +155,28 @@ void Player::OnTriggerStay2D(Collider2D collision)
 		//적기 총알1 충돌 피해
 		hp = hp - 10;
 
-		cout << "플레이어 체력 " << hp << endl;
-
 		if (hp <= 0)
 		{
-			//플레이어 폭발
-
-			//플레이어 제거
-			Destroy(this);
-
-			//플레이어 리스폰 [참고.. 남은 게임수에 따라서..]
+			Explode();
 		}
 
 	}else if (tag == "적기")
 	{
-		
+		Explode();
 	}
+}
+
+void Player::Explode()
+{
+	//플레이어 폭발
+	float px, py;
+
+	GetPosition(px, py);
+	Instantiate(new ShipExp(px - 50, py - 50));
+
+	//플레이어 제거
+	Destroy(this);
+
+	//플레이어 리스폰 [참고.. 남은 게임수에 따라서..]
+	//ObjectManager::Instantiate(new Player(240 - 34, 650));
 }
