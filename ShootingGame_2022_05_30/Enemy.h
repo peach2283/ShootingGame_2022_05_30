@@ -19,6 +19,9 @@ private:
 	float fireTimer;
 	float fireDelay;
 
+	int   randomPos;  //좌우 이동상태로..전이하는 위치
+	int   randomDir;  //좌우 이동상태 전이 방향
+
 public:
 	Enemy(float px, float py);
 	~Enemy();

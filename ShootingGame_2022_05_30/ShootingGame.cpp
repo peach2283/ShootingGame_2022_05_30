@@ -35,6 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //초기화
     InitGraphic(hWnd, 0, 0, 480, 800); //그래픽 초기화
     Time::Init();                      //델타타임 초기화
+    Random::Init();                    //랜덤 씨드 초기화
 
     //게임오브젝트들(배경, 플레이어) 추가하기
     ObjectManager::Instantiate(new GameBG(0     ,   0));

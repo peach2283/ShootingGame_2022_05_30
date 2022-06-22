@@ -46,17 +46,32 @@ void EnemySpawner::Update()
 
 	if (spawnTimer >= spawnDelay)
 	{
-		//적기 만들기(적기 스폰하기)
-		int currCount = spawnCount - deadCount;
-
-		if (currCount < 3)  //현재 게임의 적기 갯수가 3개 보다 작을때문 스폰함
+		if (spawnCount < 10)
 		{
-			float px, py;
+			//적기 만들기(적기 스폰하기)
+			int currCount = spawnCount - deadCount;
 
-			GetPosition(px, py);
-			Instantiate(new Enemy(px - 95, py - 140));
+			if (currCount < 3)  //현재 게임의 적기 갯수가 3개 보다 작을때문 스폰함
+			{
+				float px, py;
+				GetPosition(px, py);
 
-			spawnCount++;  //스폰카운트 증가하시
+				//적기 스폰위치 배열로 만들기
+				float spawnx[3] = { px - 95 - 100 , px - 95  , px - 95 + 100 };
+				float spawny[3] = { py - 140      , py - 140 , py - 140 };
+
+				//랜덤 스폰배열 인덱스
+				int randomIdx = Random::Range(0, 3); //0, 1, 2 중 랜덤값
+				Instantiate(new Enemy(spawnx[randomIdx], spawny[randomIdx]));
+
+				spawnCount++;  //스폰카운트 증가하시
+			}
+		}
+		else {
+			
+			//보스 만들기(보스 스폰하기)
+			cout << "보스 스폰하기" << endl;
+		
 		}
 
 		spawnTimer = 0;  //타이머 리셋

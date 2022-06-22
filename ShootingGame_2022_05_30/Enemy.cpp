@@ -40,6 +40,10 @@ void Enemy::Start()
 	AddBoxCollider2D(85 , 25 , 20 , 110);  //가운데..몸통 충돌 박스
 	AddBoxCollider2D(0  , 85 , 190,  20);  //가운데..날개 충돌 박스
 	AddBoxCollider2D(65 , 10 , 60 ,  15);  //꼬리  ..날개 충돌 박스
+
+	//적기 랜덤 위치 / 방향 (좌우이동 상태 전이) 
+	randomPos = Random::Range(50, 200);
+	randomDir = Random::Range(0,   2);
 }
 
 void Enemy::Update()
@@ -52,9 +56,12 @@ void Enemy::Update()
 			Translate(0, moveSpeed * Time::deltaTime);  //아래로 등장
 
 			//좌우..이동 상태전이하기
-			if (GetPy() >= 100)
+			if (GetPy() >= randomPos)
 			{
-				state = State::left;
+				if (randomDir == 0)
+					state = State::left;
+				else
+					state = State::right;
 			}
 		}
 		break;
