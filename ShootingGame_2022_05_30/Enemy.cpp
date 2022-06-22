@@ -92,6 +92,7 @@ void Enemy::Update()
 			if (lifeTime <= 0)
 			{
 				Destroy(this);
+	
 			}
 		}
 		break;
@@ -109,6 +110,13 @@ void Enemy::Update()
 
 		fireTimer = 0;
 	}
+}
+
+void Enemy::OnDestroy()
+{
+	//적기스포너의 deadCount 증가시키기
+	EnemySpawner* spawner = EnemySpawner::Instance();
+	spawner->IncDeadCount();
 }
 
 void Enemy::OnTriggerStay2D(Collider2D collision)

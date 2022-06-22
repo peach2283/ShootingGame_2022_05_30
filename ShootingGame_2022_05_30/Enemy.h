@@ -26,6 +26,7 @@ public:
 	void Start();
 	void Update();
 
+	void OnDestroy();
 	void OnTriggerStay2D(Collider2D collision);
 
 	//적기 폭발 제거 함수

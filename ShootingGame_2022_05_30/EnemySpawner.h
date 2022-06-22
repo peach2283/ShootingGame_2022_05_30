@@ -5,6 +5,8 @@
 class EnemySpawner : public GameObject
 {
 private:
+	//싱글톤 만들기 (1) 자기 객체를 저장할 변수를 static으로 만듬
+	static EnemySpawner* instance;
 
 	float spawnTimer;
 	float spawnDelay;
@@ -17,10 +19,19 @@ public:
 	EnemySpawner(float px, float py);
 	~EnemySpawner();
 
+	//싱글톤 만들기(2) Awake함수에서..자기자신을... instance 변수에 저장함
+	//void Awake();
+
 	void Start();
 	void Update();
 
+	//싱글톤만들기 (3)instance의 게터를 static으로 만들어라!!
+	static EnemySpawner* Instance();
+
 	//디버그 드로우..오버라이딩
 	void DebugDraw();
+
+	//Enemy Dead Count 증가함수
+	void IncDeadCount();
 };
 

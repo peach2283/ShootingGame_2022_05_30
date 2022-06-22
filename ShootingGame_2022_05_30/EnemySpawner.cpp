@@ -1,5 +1,7 @@
 #include "ShootingGame.h"
 
+EnemySpawner* EnemySpawner::instance = nullptr;
+
 EnemySpawner::EnemySpawner(float px, float py) : GameObject("", "", true, px, py)
 {
 	this->spawnTimer = 0;
@@ -12,8 +14,31 @@ EnemySpawner::EnemySpawner(float px, float py) : GameObject("", "", true, px, py
 EnemySpawner::~EnemySpawner()
 {}
 
+/************************************
+void EnemySpawner::Awake()
+{
+	//instance = this;
+}
+**************************************/
+
+EnemySpawner* EnemySpawner::Instance()
+{
+	return instance;
+}
+
+void EnemySpawner::IncDeadCount()
+{
+	deadCount++;
+
+	cout << "적기 dead Count" << deadCount <<endl;
+
+}
+
 void EnemySpawner::Start()
-{}
+{
+	//유니티에서는 자기포인터 저장을..우선으로 하기 위해서..Awake함수에 포함됨
+	instance = this;
+}
 
 void EnemySpawner::Update()
 {

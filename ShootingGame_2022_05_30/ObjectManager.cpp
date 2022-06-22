@@ -131,6 +131,9 @@ void ObjectManager::ClearDeadObject()
 
 			gameObjects.erase(gameObjects.begin() + i);  //gameObjects stl vector에서 i 번째 공간삭제하기
 
+			//객체에...삭제됨을 알려줌
+			o->OnDestroy();
+
 			delete o;  //객체 삭제하기
 			i--;
 		}

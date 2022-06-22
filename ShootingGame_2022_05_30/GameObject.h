@@ -34,6 +34,7 @@ public:
 	virtual void Start();
 	virtual void Update();
 	virtual void Draw();
+	virtual void OnDestroy();
 
 	//충돌체 그리기 함수//
 	virtual void DebugDraw();

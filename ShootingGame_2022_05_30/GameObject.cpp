@@ -25,6 +25,9 @@ void GameObject::Update()
 void GameObject::Draw()
 {}
 
+void GameObject::OnDestroy()
+{}
+
 void GameObject::DebugDraw()
 {
 	//Box 충돌체..화면에 그리기//
