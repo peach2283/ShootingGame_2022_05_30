@@ -9,6 +9,8 @@ EnemySpawner::EnemySpawner(float px, float py) : GameObject("", "", true, px, py
 
 	this->spawnCount = 0;
 	this->deadCount  = 0;
+
+	this->state = State::enemy;
 }
 
 EnemySpawner::~EnemySpawner()
@@ -42,39 +44,59 @@ void EnemySpawner::Start()
 
 void EnemySpawner::Update()
 {
-	spawnTimer += Time::deltaTime;
-
-	if (spawnTimer >= spawnDelay)
+	//스포너 상태//
+	switch (state)
 	{
-		if (spawnCount < 10)
+		case State::enemy:
 		{
-			//적기 만들기(적기 스폰하기)
-			int currCount = spawnCount - deadCount;
+			spawnTimer += Time::deltaTime;
 
-			if (currCount < 3)  //현재 게임의 적기 갯수가 3개 보다 작을때문 스폰함
+			if (spawnTimer >= spawnDelay)
 			{
-				float px, py;
-				GetPosition(px, py);
+				if (spawnCount < 20)
+				{
+					//적기 만들기(적기 스폰하기)
+					int currCount = spawnCount - deadCount;
 
-				//적기 스폰위치 배열로 만들기
-				float spawnx[3] = { px - 95 - 100 , px - 95  , px - 95 + 100 };
-				float spawny[3] = { py - 140      , py - 140 , py - 140 };
+					if (currCount < 3)  //현재 게임의 적기 갯수가 3개 보다 작을때문 스폰함
+					{
+						float px, py;
+						GetPosition(px, py);
 
-				//랜덤 스폰배열 인덱스
-				int randomIdx = Random::Range(0, 3); //0, 1, 2 중 랜덤값
-				Instantiate(new Enemy(spawnx[randomIdx], spawny[randomIdx]));
+						//적기 스폰위치 배열로 만들기
+						float spawnx[3] = { px - 95 - 100 , px - 95  , px - 95 + 100 };
+						float spawny[3] = { py - 140      , py - 140 , py - 140 };
 
-				spawnCount++;  //스폰카운트 증가하시
+						//랜덤 스폰배열 인덱스
+						int randomIdx = Random::Range(0, 3); //0, 1, 2 중 랜덤값
+						Instantiate(new Enemy(spawnx[randomIdx], spawny[randomIdx]));
+
+						spawnCount++;  //스폰카운트 증가하시
+					}
+				}
+				else {
+
+					//보스 스폰 상태로..전이하기
+					state = State::boss;
+				}
+
+				spawnTimer = 0;  //타이머 리셋
 			}
 		}
-		else {
-			
-			//보스 만들기(보스 스폰하기)
+		break;
+
+		case State::boss:
+		{
 			cout << "보스 스폰하기" << endl;
+			state = State::finish;  //스포너 동작 종료
+		}
+		break;
+
+		case State::finish:
+		{
 		
 		}
-
-		spawnTimer = 0;  //타이머 리셋
+		break;
 	}
 }
 

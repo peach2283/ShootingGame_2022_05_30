@@ -42,13 +42,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new Player(240-34, 650));
    
     //적기 스포너 객체 추가하기
-    ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    //ObjectManager::Instantiate(new EnemySpawner(240, 2));
 
-    //적기 추가하기..테스트
-    //ObjectManager::Instantiate(new Enemy(240-95, -200));
-
-    //레이저 폭발 테스트하기
-    //ObjectManager::Instantiate(new ShipExp(100,100));
+    //폭탄 테스트
+    //ObjectManager::Instantiate(new Bomb(100, 500));
 
     MSG msg;
 

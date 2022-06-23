@@ -46,7 +46,7 @@ void Player::Update()
 	Move();  //이동 함수
 	Fire();	 //발사 함수
 }
-
+	
 void Player::Move()  //이동 함수
 {
 	/////////////플레이어 이동하기/////////////////
@@ -143,6 +143,15 @@ void Player::Fire()  //발사 함수
 
 			fireTimer = 0;  //발사 타이머..리셋
 		}
+	}
+
+	///////////////폭탄 발사하기/////////////
+	if (Input::GetKeyDown(KeyCode::Z) == true)
+	{
+		float px, py;
+
+		GetPosition(px, py);
+		Instantiate(new Bomb(px+15, py-20));
 	}
 }
 

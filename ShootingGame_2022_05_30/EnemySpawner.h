@@ -4,6 +4,9 @@
 
 class EnemySpawner : public GameObject
 {
+  //EnemySpawner 상태 Enum  만들기
+  enum class State {enemy=0, boss=1, finish=2};
+
 private:
 	//싱글톤 만들기 (1) 자기 객체를 저장할 변수를 static으로 만듬
 	static EnemySpawner* instance;
@@ -14,6 +17,9 @@ private:
 	//적기 스폰 카운터..
 	int spawnCount;  //스폰된 적기 갯수
 	int deadCount;   //게임에서..제거된 갯수
+
+	//상태 변수
+	State state;
 
 public:
 	EnemySpawner(float px, float py);

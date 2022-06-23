@@ -19,3 +19,4 @@
 #include "BulletExp.h"
 #include "EnemySpawner.h"
 #include "Random.h"
+#include "Bomb.h"
