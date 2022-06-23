@@ -122,8 +122,8 @@ void Enemy::Update()
 void Enemy::OnDestroy()
 {
 	//적기스포너의 deadCount 증가시키기
-	EnemySpawner* spawner = EnemySpawner::Instance();
-	spawner->IncDeadCount();
+	//EnemySpawner* spawner = EnemySpawner::Instance();
+	//spawner->IncDeadCount();
 }
 
 void Enemy::OnTriggerStay2D(Collider2D collision)
@@ -161,6 +161,10 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 	{
 		Explode();
 	}
+	else if (tag == "폭탄폭발")
+	{
+		Explode();
+	}
 }
 
 void Enemy::Explode()
@@ -170,6 +174,9 @@ void Enemy::Explode()
 
 	GetPosition(px, py);
 	Instantiate(new ShipExp(px + 15, py));
+
+	EnemySpawner* spawner = EnemySpawner::Instance();
+	spawner->IncDeadCount();
 
 	//적기 제거
 	Destroy(this);

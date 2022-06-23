@@ -24,6 +24,10 @@ void Bomb::Update()
 void Bomb::OnAnimationEnd()
 {
 	//ÆøÅº Æø¹ß È¿°ú
+	float px, py;
+
+	GetPosition(px, py);
+	Instantiate(new BombExp(px-50, py-50));
 
 	//ÆøÅº Á¦°ÅÇÏ±â
 	Destroy(this);
