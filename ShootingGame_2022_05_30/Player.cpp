@@ -151,7 +151,8 @@ void Player::Fire()  //발사 함수
 		float px, py;
 
 		GetPosition(px, py);
-		Instantiate(new Bomb(px+15, py-20));
+		//Instantiate(new Bomb(px+15, py-20));
+		Instantiate(new Bomb(px + 15, py));
 	}
 }
 

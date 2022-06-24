@@ -11,7 +11,11 @@ Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py)
 	this->hp    = 100;
 
 	this->fireTimer = 0;
-	this->fireDelay = 0.5;
+	this->fireDelay = 1;
+
+	this->hasBombTrigger   = false;
+	this->hasLaserTrigger  = false;
+	this->hasPlayerTrigger = false;
 }
 
 Enemy::~Enemy()
@@ -117,54 +121,74 @@ void Enemy::Update()
 
 		fireTimer = 0;
 	}
+
+	//충돌(트리거) 체크 변수 리셋
+	hasBombTrigger   = false;
+	hasLaserTrigger  = false;
+	hasPlayerTrigger = false;
 }
 
 void Enemy::OnDestroy()
 {
 	//적기스포너의 deadCount 증가시키기
-	//EnemySpawner* spawner = EnemySpawner::Instance();
-	//spawner->IncDeadCount();
+	EnemySpawner* spawner = EnemySpawner::Instance();
+	spawner->IncDeadCount();
 }
 
 void Enemy::OnTriggerStay2D(Collider2D collision)
-{
-	string tag = collision.tag;
+{			
+		string tag = collision.tag;
 
-	if (tag == "레이저")
-	{
-		//레이저 피해 적용하기
-		hp = hp - 5;
-
-		if (80 <= hp && hp <= 100)  //피해 없음
+		if (tag == "레이저")
 		{
-		
+			if (hasLaserTrigger == false)
+			{
+				hasLaserTrigger = true;
+
+				//레이저 피해 적용하기
+				hp = hp - 5;
+
+				if (80 <= hp && hp <= 100)  //피해 없음
+				{
+
+				}
+				else if (50 <= hp && hp < 80)  //경미한 피해
+				{
+					//1 번 애니메이션 변경
+					Play(1);
+				}
+				else if (0 < hp && hp < 50)   //심각한 피해
+				{
+					//2 번 애니메이션 변경
+					Play(2);
+
+					//적기 추락(fall)상태로..전이하기
+					state = State::fall;
+
+				}
+				else  if (hp <= 0)           //적기 폭발
+				{
+					Explode();
+				}
+			}
 		}
-		else if (50 <= hp && hp < 80)  //경미한 피해
+		else if (tag == "플레이어")
 		{
-			//1 번 애니메이션 변경
-			Play(1);
+			if (hasPlayerTrigger == false)
+			{
+				hasPlayerTrigger = true;
+				Explode();
+			}
 		}
-		else if (0 < hp && hp < 50)   //심각한 피해
+		else if (tag == "폭탄폭발")
 		{
-			//2 번 애니메이션 변경
-			Play(2);
-
-			//적기 추락(fall)상태로..전이하기
-			state = State::fall;
-
-		}else  if (hp <= 0)           //적기 폭발
-		{
-			Explode();
-		}
-	}
-	else if (tag == "플레이어")
-	{
-		Explode();
-	}
-	else if (tag == "폭탄폭발")
-	{
-		Explode();
-	}
+			if (hasBombTrigger == false)  //이전에 충돌이 없었는지를 체크
+			{
+				//충돌이 있었음을..표시함
+				hasBombTrigger = true;
+				Explode();
+			}
+		}	
 }
 
 void Enemy::Explode()
@@ -174,9 +198,6 @@ void Enemy::Explode()
 
 	GetPosition(px, py);
 	Instantiate(new ShipExp(px + 15, py));
-
-	EnemySpawner* spawner = EnemySpawner::Instance();
-	spawner->IncDeadCount();
 
 	//적기 제거
 	Destroy(this);

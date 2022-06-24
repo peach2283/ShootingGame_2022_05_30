@@ -22,6 +22,10 @@ private:
 	int   randomPos;  //좌우 이동상태로..전이하는 위치
 	int   randomDir;  //좌우 이동상태 전이 방향
 
+	bool hasBombTrigger;      //폭탄폭발 충돌이 있었는지를..표시하는 변수
+	bool hasLaserTrigger;     //레이저와 충돌이 있었는지를 .. 표시하는 변수 
+	bool hasPlayerTrigger;    //플레이어와 충돌이 있었는지를 .. 표시하는 변수
+
 public:
 	Enemy(float px, float py);
 	~Enemy();

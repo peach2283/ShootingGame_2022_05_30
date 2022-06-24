@@ -31,9 +31,6 @@ EnemySpawner* EnemySpawner::Instance()
 void EnemySpawner::IncDeadCount()
 {
 	deadCount++;
-
-	cout << "Àû±â dead Count" << deadCount <<endl;
-
 }
 
 void EnemySpawner::Start()
