@@ -1,7 +1,7 @@
 #include "Sprite.h"
 
-Sprite::Sprite(string tag, string name, bool active, float px, float py)
-	   :GameObject(tag, name, active, px, py)
+Sprite::Sprite(string tag, string name, bool active, float px, float py, int layer)
+	   :GameObject(tag, name, active, px, py, layer)
 {
     sprite.width  = 0;
     sprite.height = 0;

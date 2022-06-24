@@ -16,6 +16,18 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
+//stl algorithm의 정렬 비교함수
+bool Compare(int x, int y)
+{
+    if (x > y)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -41,11 +53,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240-34, 650));
    
-    //적기 스포너 객체 추가하기
-    //ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    //stl vector  정렬 연습하기//
+    vector<int> v;
 
-    //폭탄 테스트
-    //ObjectManager::Instantiate(new Bomb(100, 500));
+    v.push_back(100);
+    v.push_back(10);
+    v.push_back(200);
+    v.push_back(30);
+
+    //stl의 sort 사용하기//
+    sort(v.begin(), v.end(), Compare);
+
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << " ";
+    }
 
     MSG msg;
 

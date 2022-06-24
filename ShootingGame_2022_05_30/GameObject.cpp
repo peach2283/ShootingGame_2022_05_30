@@ -1,10 +1,11 @@
 #include "ShootingGame.h"
 
-GameObject::GameObject(string tag, string name, bool active, float px, float py)
+GameObject::GameObject(string tag, string name, bool active, float px, float py, int layer)
 {
 	this->tag    = tag;
 	this->name   = name;
 	this->active = active;
+	this->layer  = layer;
 
 	this->px = px;
 	this->py = py;

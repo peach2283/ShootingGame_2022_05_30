@@ -14,6 +14,7 @@ private:
 	string tag;
 	string name;
 	bool   active;
+	int    layer;
 
 	//삭제 대상인지를..표시하는 변수
 	bool isDead;  //true - 삭제대상임, false - 삭제대상아님
@@ -27,7 +28,7 @@ private:
 
 public:
 	//생성자, 소멸자//
-	GameObject(string tag, string name, bool active, float px, float py);
+	GameObject(string tag, string name, bool active, float px, float py, int layer=0);
 	virtual ~GameObject();
 
 	//부모..기본 (가상)함수//

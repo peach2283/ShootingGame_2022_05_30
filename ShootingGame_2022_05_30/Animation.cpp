@@ -1,7 +1,7 @@
 #include "ShootingGame.h"
 
-Animation::Animation(string tag, string name, bool active, float px, float py)
-		 :GameObject(tag, name, active, px, py)
+Animation::Animation(string tag, string name, bool active, float px, float py, int layer)
+		 :GameObject(tag, name, active, px, py, layer)
 {
 	this->index = 0;
 	this->clip  = 0;

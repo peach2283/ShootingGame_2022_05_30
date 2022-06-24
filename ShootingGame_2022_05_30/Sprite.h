@@ -9,7 +9,7 @@ private:
 
 public:
 
-	Sprite(string tag, string name, bool active, float px, float py);
+	Sprite(string tag, string name, bool active, float px, float py, int layer=0);
 	~Sprite();
 
 	void SetSprite(const char* fileName);

@@ -21,7 +21,7 @@ private:
 	float speed;   //애니메이션 재생 속도 조절
 
 public:
-	Animation(string tag, string name, bool active, float px, float py);
+	Animation(string tag, string name, bool active, float px, float py, int layer=0);
 	~Animation();
 
 	void Draw();
