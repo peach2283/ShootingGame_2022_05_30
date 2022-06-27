@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-ShipExp::ShipExp(float px, float py) : Animation("", "", true, px, py)
+ShipExp::ShipExp(float px, float py) : Animation("", "", true, px, py, 1)
 {}
 
 ShipExp::~ShipExp()

@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py)
+Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py, 1)
 {
 	this->moveSpeed = 100;
 	this->fallSpeed = 300;

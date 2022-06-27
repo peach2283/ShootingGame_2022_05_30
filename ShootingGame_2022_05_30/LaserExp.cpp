@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-LaserExp::LaserExp(float px, float py) : Animation("", "", true, px, py)
+LaserExp::LaserExp(float px, float py) : Animation("", "", true, px, py, 1)
 {}
 
 LaserExp::~LaserExp()

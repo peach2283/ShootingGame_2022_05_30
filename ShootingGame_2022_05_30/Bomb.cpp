@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Bomb::Bomb(float px, float py) : Animation("", "", true, px, py)
+Bomb::Bomb(float px, float py) : Animation("", "", true, px, py, 1)
 {
 	this->speed = 200;
 }

@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-BulletExp::BulletExp(float px, float py) : Animation("", "", true, px, py)
+BulletExp::BulletExp(float px, float py) : Animation("", "", true, px, py, 1)
 {}
 
 BulletExp::~BulletExp()

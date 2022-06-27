@@ -21,6 +21,9 @@ public:
 	//게임 목록 Draw 함수
 	static void Draw();
 
+	//게임오브젝트 레이어 정렬 함수
+	static void SortLayer();
+
 	//게임 목록 전체 Clear 함수
 	static void Clear();
 

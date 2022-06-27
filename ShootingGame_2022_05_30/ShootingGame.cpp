@@ -16,18 +16,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
-//stl algorithm의 정렬 비교함수
-bool Compare(int x, int y)
-{
-    if (x > y)
-    {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -49,25 +37,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::Init();                      //델타타임 초기화
     Random::Init();                    //랜덤 씨드 초기화
 
-    //게임오브젝트들(배경, 플레이어) 추가하기
+    //게임오브젝트들(배경, 플레이어) 추가하기    
     ObjectManager::Instantiate(new GameBG(0     ,   0));
-    ObjectManager::Instantiate(new Player(240-34, 650));
-   
-    //stl vector  정렬 연습하기//
-    vector<int> v;
+    ObjectManager::Instantiate(new Player(240 - 34, 650));
 
-    v.push_back(100);
-    v.push_back(10);
-    v.push_back(200);
-    v.push_back(30);
-
-    //stl의 sort 사용하기//
-    sort(v.begin(), v.end(), Compare);
-
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
+    ObjectManager::Instantiate(new EnemySpawner(240, 2));
 
     MSG msg;
 
@@ -96,6 +70,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         ObjectManager::ClearDeadObject();  //목록에서 삭제대상 객체들을..모두 제거하기
 
         ObjectManager::Update();           //게임객체 업데이트
+        ObjectManager::SortLayer();        //게임객체 레이어..정렬함수
         ObjectManager::Draw();             //게임객체 그리기
 
         Render();  //화면 출력

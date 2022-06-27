@@ -81,6 +81,11 @@ void GameObject::GetPosition(float& px, float& py)
 	py = this->py;
 }
 
+int GameObject::GetLayer()
+{
+	return layer;
+}
+
 //세터 함수//
 void GameObject::SetTag(string tag)
 {

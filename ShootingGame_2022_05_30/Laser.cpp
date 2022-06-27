@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Laser::Laser(float px, float py) : Sprite("레이저","", true, px, py)
+Laser::Laser(float px, float py) : Sprite("레이저","", true, px, py, 1)
 {
 	this->speed    = 250;
 	this->lifeTime = 5;

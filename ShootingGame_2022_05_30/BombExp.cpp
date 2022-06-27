@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-BombExp::BombExp(float px, float py) : Animation("气藕气惯", "", true, px, py)
+BombExp::BombExp(float px, float py) : Animation("气藕气惯", "", true, px, py, 1)
 {}
 
 BombExp::~BombExp()

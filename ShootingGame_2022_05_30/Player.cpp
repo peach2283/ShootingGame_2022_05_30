@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 0)
+Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 2)
 {
 	this->hp		 = 100;
 	this->speed      = 200;

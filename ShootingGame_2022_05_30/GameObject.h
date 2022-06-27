@@ -50,6 +50,8 @@ public:
 
 	void GetPosition(float &px, float &py);
 
+	int GetLayer();
+
 	//세터 함수//
 	void SetTag(string tag);
 	void SetName(string name);

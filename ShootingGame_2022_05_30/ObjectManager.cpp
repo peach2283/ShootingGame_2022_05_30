@@ -1,11 +1,30 @@
+#include "framework.h"
 #include "ShootingGame.h"
 
 vector<GameObject*> ObjectManager::gameObjects;
+
+bool CmpLayer(GameObject* x, GameObject* y)
+{
+	//x, y의 레이어를 비교
+	if (x->GetLayer()  <  y->GetLayer())
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 void ObjectManager::Instantiate(GameObject* o)
 {
 	o->Start();
 	gameObjects.push_back(o);
+}
+
+void ObjectManager::SortLayer()
+{
+	//새로운 게임객체 추가후...레이어에 의해서..정렬//
+	sort(gameObjects.begin(), gameObjects.end(), CmpLayer);
 }
 
 void ObjectManager::Destroy(GameObject* o)

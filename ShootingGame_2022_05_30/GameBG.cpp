@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-GameBG::GameBG(float px, float py) : Sprite("게임배경", "", true, px, py, 1)
+GameBG::GameBG(float px, float py) : Sprite("게임배경", "", true, px, py, 0)
 {}
 
 GameBG::~GameBG()
