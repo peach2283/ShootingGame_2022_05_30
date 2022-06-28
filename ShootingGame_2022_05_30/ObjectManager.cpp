@@ -63,6 +63,10 @@ void ObjectManager::CheckCollision()
 				vector<BoxCollider2D> coli = obji->GetColliders();
 				vector<BoxCollider2D> colj = objj->GetColliders();
 
+				//int layeri = obji->GetLayer();
+				//int layerj = objj->GetLayer();
+				//[유니티 에는] ... 옵션 설정에 따라서..layeri에 속한 obji와 layerj에 속한 objj의 충돌검사를 할지 않할지를 결정
+
 				for (int ii = 0; ii < coli.size(); ii++)  //coli의 박스들..반복
 				{
 					for (int jj = 0; jj < colj.size(); jj++)  //colj의 박스들..반복

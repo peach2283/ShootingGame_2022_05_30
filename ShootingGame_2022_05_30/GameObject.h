@@ -15,6 +15,7 @@ private:
 	string name;
 	bool   active;
 	int    layer;
+	//int    orderInLayer; [유니티에서] 동일 레이어내의 객체들의 세부 순서를 정하는 옵션
 
 	//삭제 대상인지를..표시하는 변수
 	bool isDead;  //true - 삭제대상임, false - 삭제대상아님

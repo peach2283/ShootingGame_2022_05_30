@@ -158,7 +158,7 @@ void Player::Fire()  //발사 함수
 
 void Player::OnTriggerStay2D(Collider2D collision)
 {
-	/****************************************
+	/****************************************/
 	string tag = collision.tag;
 
 	if (tag == "총알1")
@@ -175,7 +175,18 @@ void Player::OnTriggerStay2D(Collider2D collision)
 	{
 		Explode();
 	}
-	*****************************************/
+	else if (tag == "레이저아이템")
+	{
+		//레이저 발사 카운트 증가//
+		laserCount++;
+
+		//최대레이저 발사갯수는 3으로 제한함//
+		if (laserCount > 3)
+		{
+			laserCount = 3;
+		}
+	}
+	/*****************************************/
 }
 
 void Player::Explode()

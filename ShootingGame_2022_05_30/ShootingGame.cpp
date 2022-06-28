@@ -41,7 +41,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240 - 34, 650));
 
-    ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    //ObjectManager::Instantiate(new EnemySpawner(240, 2));
+
+    //총알 아이템 테스트하기
+    ObjectManager::Instantiate(new LaserItem( 10, 300));
+    ObjectManager::Instantiate(new LaserItem(110, 300));
+    ObjectManager::Instantiate(new LaserItem(210, 300));
+    ObjectManager::Instantiate(new LaserItem(310, 300));
 
     MSG msg;
 
