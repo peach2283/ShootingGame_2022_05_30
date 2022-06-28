@@ -21,6 +21,14 @@ private:
 	//상태 변수
 	State state;
 
+	//적기 레이저 아이템 드랍 정보 배열
+	bool dropLaserItem[20] = {
+								true, true, true, true, true,
+								true, true, true, true, true,
+								true, true, true, true, true,
+								true, true, true, true, true,
+							  };
+
 public:
 	EnemySpawner(float px, float py);
 	~EnemySpawner();

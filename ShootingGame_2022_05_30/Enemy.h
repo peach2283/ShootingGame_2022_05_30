@@ -26,6 +26,9 @@ private:
 	bool hasLaserTrigger;     //레이저와 충돌이 있었는지를 .. 표시하는 변수 
 	bool hasPlayerTrigger;    //플레이어와 충돌이 있었는지를 .. 표시하는 변수
 
+	//레이저 아이템 드랍 변수
+	bool dropLaserItem;     
+
 public:
 	Enemy(float px, float py);
 	~Enemy();
@@ -38,5 +41,9 @@ public:
 
 	//적기 폭발 제거 함수
 	void Explode();
+
+	//레이저 아이템 드랍 변수 세터
+	void SetDropLaserItem(bool drop);
+
 };
 

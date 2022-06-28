@@ -66,7 +66,21 @@ void EnemySpawner::Update()
 
 						//랜덤 스폰배열 인덱스
 						int randomIdx = Random::Range(0, 3); //0, 1, 2 중 랜덤값
-						Instantiate(new Enemy(spawnx[randomIdx], spawny[randomIdx]));
+
+						//spawnCount  번째 적기
+
+						if (dropLaserItem[spawnCount] == true)
+						{
+							GameObject* obj = new Enemy(spawnx[randomIdx], spawny[randomIdx]);
+
+							Instantiate(obj);  //레이저 아이템을 드랍하는 적기
+
+							
+
+						}
+						else {
+							Instantiate(new Enemy(spawnx[randomIdx], spawny[randomIdx]));  //레이저 아이템을 드랍하지 않는 적기
+						}
 
 						spawnCount++;  //스폰카운트 증가하시
 					}

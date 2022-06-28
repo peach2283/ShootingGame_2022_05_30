@@ -16,6 +16,8 @@ Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py, 1)
 	this->hasBombTrigger   = false;
 	this->hasLaserTrigger  = false;
 	this->hasPlayerTrigger = false;
+
+	this->dropLaserItem = false;
 }
 
 Enemy::~Enemy()
@@ -199,6 +201,19 @@ void Enemy::Explode()
 	GetPosition(px, py);
 	Instantiate(new ShipExp(px + 15, py));
 
+	//아이템 떨기기(item drop)
+	//유니티에서 확률은 정수가 아닌 실수 Range함수를 사용함
+	int r = Random::Range(1, 101);  // 1~100 범위의 랜덤 정수
+	if (r <= 20)
+	{
+		Instantiate(new LaserItem(px + 85, py + 40));
+	}
+
 	//적기 제거
 	Destroy(this);
+}
+
+void Enemy::SetDropLaserItem(bool drop)
+{
+	this->dropLaserItem = drop;
 }
