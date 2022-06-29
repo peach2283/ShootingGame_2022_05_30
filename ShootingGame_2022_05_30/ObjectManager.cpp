@@ -116,7 +116,10 @@ void ObjectManager::Update()
 {
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
-		gameObjects[i]->Update();
+		if (gameObjects[i]->GetActive() == true)
+		{
+			gameObjects[i]->Update();
+		}
 	}
 }
 
@@ -124,10 +127,13 @@ void ObjectManager::Draw()
 {
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
-		gameObjects[i]->Draw();
+		if (gameObjects[i]->GetActive() == true) //활성화된 객체들만..화면에 ... 그림
+		{
+			gameObjects[i]->Draw();
 
-		//게임오브젝트 디버그용 그리기 함수//
-		gameObjects[i]->DebugDraw();
+			//게임오브젝트 디버그용 그리기 함수//
+			gameObjects[i]->DebugDraw();
+		}
 	}
 }
 
