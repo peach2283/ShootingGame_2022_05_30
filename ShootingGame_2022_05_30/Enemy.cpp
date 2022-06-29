@@ -203,9 +203,15 @@ void Enemy::Explode()
 
 	//아이템 떨기기(item drop)
 	//유니티에서 확률은 정수가 아닌 실수 Range함수를 사용함
-	int r = Random::Range(1, 101);  // 1~100 범위의 랜덤 정수
-	if (r <= 20)
-	{
+	//int r = Random::Range(1, 101);  // 1~100 범위의 랜덤 정수
+	//if (r <= 20)
+	//{
+	//	Instantiate(new LaserItem(px + 85, py + 40));
+	//}
+
+	//직접 지정으로..아이템 떨기기 만들기
+	if (dropLaserItem == true)
+	{	
 		Instantiate(new LaserItem(px + 85, py + 40));
 	}
 

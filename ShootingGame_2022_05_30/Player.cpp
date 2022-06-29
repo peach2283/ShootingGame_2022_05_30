@@ -4,7 +4,9 @@ Player::Player(float px, float py) :Animation("ÇÃ·¹ÀÌ¾î", "", true, px, py, 2)
 {
 	this->hp		 = 100;
 	this->speed      = 200;
+	
 	this->laserCount = 1;   //¾ÆÀÌÅÛÀ» È¹µæÇÏ¸é..¹ß»ç°¹¼ö Áõ°¡
+	this->bombCount  = 3;   //ÇÃ·¹ÀÌ¾î ÆøÅº °¹¼ö
 
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //¹ß»ç°£ Áö¿¬½Ã°£
@@ -148,11 +150,19 @@ void Player::Fire()  //¹ß»ç ÇÔ¼ö
 	///////////////ÆøÅº ¹ß»çÇÏ±â/////////////
 	if (Input::GetKeyDown(KeyCode::Z) == true)
 	{
-		float px, py;
+		if (bombCount > 0)
+		{
+			float px, py;
 
-		GetPosition(px, py);
-		//Instantiate(new Bomb(px+15, py-20));
-		Instantiate(new Bomb(px + 15, py));
+			GetPosition(px, py);
+			//Instantiate(new Bomb(px+15, py-20));
+			Instantiate(new Bomb(px + 15, py));
+
+			bombCount--;  //ÆøÅº °¹¼ö °¨¼Ò
+		}
+		else {
+			cout << "³²Àº ÆøÅºÀÌ ¾ø½À´Ï´Ù" << endl;
+		}
 	}
 }
 
@@ -164,16 +174,20 @@ void Player::OnTriggerStay2D(Collider2D collision)
 	if (tag == "ÃÑ¾Ë1")
 	{
 		//Àû±â ÃÑ¾Ë1 Ãæµ¹ ÇÇÇØ
+		/**********************
 		hp = hp - 10;
 
 		if (hp <= 0)
 		{
 			Explode();
 		}
+		***********************/
 
 	}else if (tag == "Àû±â")
 	{
+		/**************
 		Explode();
+		**************/
 	}
 	else if (tag == "·¹ÀÌÀú¾ÆÀÌÅÛ")
 	{

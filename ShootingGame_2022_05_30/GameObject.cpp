@@ -143,9 +143,11 @@ void GameObject::Translate(float x, float y)
 	}
 }
 
-void GameObject::Instantiate(GameObject* obj)
+GameObject* GameObject::Instantiate(GameObject* obj)
 {
 	ObjectManager::Instantiate(obj);
+
+	return obj;
 }
 
 void GameObject::Destroy(GameObject* obj)

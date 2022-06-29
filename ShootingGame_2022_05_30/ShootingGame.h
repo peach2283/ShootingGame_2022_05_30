@@ -22,3 +22,4 @@
 #include "Bomb.h"
 #include "BombExp.h"
 #include "LaserItem.h"
+#include "BombItem.h"

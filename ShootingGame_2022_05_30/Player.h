@@ -9,6 +9,7 @@ private:
 
 	float speed;
 	int   laserCount;  //발사되는 레이저 갯수
+	int   bombCount;   //남은 폭탄갯수
 
 	float fireTimer;   //발사 시간 측정 변수
 	float fireDelay;   //발사간 대기 시간

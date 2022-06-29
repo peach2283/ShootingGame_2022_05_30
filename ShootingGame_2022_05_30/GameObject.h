@@ -65,7 +65,7 @@ public:
 	void Translate(float x, float y);  //이동함수
 
 	//게임 객체 생성 / 제거 함수
-	void Instantiate(GameObject* obj);
+	GameObject* Instantiate(GameObject* obj);
 	void Destroy(GameObject* obj);
 
 	//충돌체(Collider)추가 함수
