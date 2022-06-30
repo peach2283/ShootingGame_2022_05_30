@@ -6,6 +6,8 @@ BombItem::BombItem(float px, float py) : Sprite("폭탄아이템","", true , px, py, 
 
 	this->blinkTimer = 0;
 	this->blinkDelay = 0.3;
+
+	this->lifeTime = 5;
 }
 
 BombItem::~BombItem()
@@ -19,6 +21,7 @@ void BombItem::Start()
 
 void BombItem::Update()
 {
+	//깜빡이기
 	if (visible == true)  //보여지고 있음
 	{
 		//타이머 측정
@@ -27,6 +30,7 @@ void BombItem::Update()
 		if (blinkTimer >= blinkDelay)
 		{
 			//SetActive(false);
+			enabled = false;  //유니티의 SpriteRenderer 컴포넌트의 기능
 			visible = false;
 
 			blinkTimer = 0; //타이머 리셋
@@ -40,9 +44,28 @@ void BombItem::Update()
 		if (blinkTimer >= blinkDelay)
 		{
 			//SetActive(true);
+			enabled = true;
 			visible = true;
 
 			blinkTimer = 0; //타이머 리셋
 		}
+	}
+
+	//라이프타임 측정하기
+	lifeTime = lifeTime - Time::deltaTime;
+
+	if (lifeTime <= 0)
+	{
+		Destroy(this);
+	}
+}
+
+void BombItem::OnTriggerStay2D(Collider2D collision)
+{
+	string tag = collision.tag;
+
+	if (tag == "플레이어")
+	{
+		Destroy(this);
 	}
 }

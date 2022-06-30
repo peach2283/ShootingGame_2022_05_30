@@ -29,6 +29,14 @@ private:
 								true  , false, true , false, true,
 							  };
 
+	//적기 폭탄 아이템 드랍 정보 배열
+	bool dropBombItem[20] = { 
+								false, false, false, false, true, 
+								false, false, false, false, true, 
+								false, false, false, false, true,
+								false, false, false, false, true
+							};
+
 public:
 	EnemySpawner(float px, float py);
 	~EnemySpawner();

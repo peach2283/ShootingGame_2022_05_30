@@ -44,10 +44,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new EnemySpawner(240, 2));
 
     //폭탄 아이템 테스트하기
-    ObjectManager::Instantiate(new BombItem( 10, 300));
-    ObjectManager::Instantiate(new BombItem(110, 300));
-    ObjectManager::Instantiate(new BombItem(210, 300));
-    ObjectManager::Instantiate(new BombItem(310, 300));
+    //ObjectManager::Instantiate(new BombItem( 10, 300));
+    //ObjectManager::Instantiate(new BombItem(110, 300));
+    //ObjectManager::Instantiate(new BombItem(210, 300));
+    //ObjectManager::Instantiate(new BombItem(310, 300));
 
     MSG msg;
 

@@ -18,6 +18,7 @@ Enemy::Enemy(float px, float py) : Animation("Àû±â","", true, px, py, 1)
 	this->hasPlayerTrigger = false;
 
 	this->dropLaserItem = false;
+	this->dropBombItem  = false;
 }
 
 Enemy::~Enemy()
@@ -215,6 +216,12 @@ void Enemy::Explode()
 		Instantiate(new LaserItem(px + 85, py + 40));
 	}
 
+	//ÆøÅº ¾ÆÀÌÅÛ ¶³±â±â
+	if (dropBombItem == true)
+	{
+		Instantiate(new BombItem(px + 85, py + 60));
+	}
+
 	//Àû±â Á¦°Å
 	Destroy(this);
 }
@@ -222,4 +229,9 @@ void Enemy::Explode()
 void Enemy::SetDropLaserItem(bool drop)
 {
 	this->dropLaserItem = drop;
+}
+
+void Enemy::SetDropBombItem(bool drop)
+{
+	this->dropBombItem = drop;
 }

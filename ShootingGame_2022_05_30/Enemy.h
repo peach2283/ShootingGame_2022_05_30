@@ -29,6 +29,9 @@ private:
 	//레이저 아이템 드랍 변수
 	bool dropLaserItem;     
 
+	//폭탄 아이템 드랍 변수
+	bool dropBombItem;
+
 public:
 	Enemy(float px, float py);
 	~Enemy();
@@ -44,6 +47,9 @@ public:
 
 	//레이저 아이템 드랍 변수 세터
 	void SetDropLaserItem(bool drop);
+
+	//폭탄 아이템 드랍 변수 세터
+	void SetDropBombItem(bool drop);
 
 };
 

@@ -200,6 +200,12 @@ void Player::OnTriggerStay2D(Collider2D collision)
 			laserCount = 3;
 		}
 	}
+	else if (tag == "ÆøÅº¾ÆÀÌÅÛ")
+	{
+		//ÆøÅº Ä«¿îÆ®(ÆøÅº°¹¼ö) Áõ°¡//
+		bombCount++;
+	}
+
 	/*****************************************/
 }
 
