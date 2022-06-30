@@ -33,6 +33,14 @@ void Animation::AddSprite(const char* fileName, int x, int y, int width, int hei
 	sprites[clipId].push_back(img);
 }
 
+void Animation::AddSprite(const char* fileName, int clipId)
+{
+	Image img;
+
+	BMP::ReadBMP(fileName, &img);
+	sprites[clipId].push_back(img);
+}
+
 void Animation::Play(int clipId)
 {
 	if (this->clip != clipId)  //현재..재생중인 애니메이션과 다른걸로..바꿀경우만

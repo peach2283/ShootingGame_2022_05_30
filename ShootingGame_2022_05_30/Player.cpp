@@ -41,6 +41,9 @@ void Player::Start()
 
 	AddBoxCollider2D(22, 5, 18, 65);  //가운데 몸통..충돌박스
 	AddBoxCollider2D(5, 40, 52, 15);  //가운데 날개..충돌박스
+
+	//보호방패를 자식객체로..추가하기//
+	AddChildObject(new Shield(0, 0));
 }
 
 void Player::Update()

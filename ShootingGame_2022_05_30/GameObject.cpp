@@ -177,3 +177,8 @@ bool GameObject::GetDead()
 {
 	return isDead;
 }
+
+void GameObject::AddChildObject(GameObject* obj)
+{
+	childObjects.push_back(obj);
+}

@@ -28,6 +28,7 @@ public:
 
 	//애니메이션 이미지 로드 함수//
 	void AddSprite(const char* fileName, int x, int y, int width, int height, int clipId);
+	void AddSprite(const char* fileName, int clipId);
 
 	//재생중인..애니메이션 클립 변경함수//
 	void Play(int clipId);

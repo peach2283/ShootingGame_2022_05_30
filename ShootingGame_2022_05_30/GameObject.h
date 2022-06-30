@@ -27,6 +27,9 @@ private:
 	//Box 충돌체 추가 - BoxCollider2D
 	vector<BoxCollider2D> colliders;
 
+	//게임오브젝트에..자식게임오브젝트 추가하기//
+	vector<GameObject*> childObjects;
+
 public:
 	//생성자, 소멸자//
 	GameObject(string tag, string name, bool active, float px, float py, int layer=0);
@@ -80,5 +83,8 @@ public:
 	//삭제 대상으로..표시하는/가져오는 함수//
 	void SetDead();  //삭제 대상표시 
 	bool GetDead();  //삭제 표시 가져오기
+
+	//자식 게임오브젝트 추가함수
+	void AddChildObject(GameObject* obj);
 };
 

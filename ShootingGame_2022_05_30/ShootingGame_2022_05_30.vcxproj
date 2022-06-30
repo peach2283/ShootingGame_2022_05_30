@@ -171,6 +171,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Shield.h" />
     <ClInclude Include="ShipExp.h" />
     <ClInclude Include="ShootingGame.h" />
     <ClInclude Include="Sprite.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="ShipExp.cpp" />
     <ClCompile Include="ShootingGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
