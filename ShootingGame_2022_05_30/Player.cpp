@@ -43,7 +43,7 @@ void Player::Start()
 	AddBoxCollider2D(5, 40, 52, 15);  //가운데 날개..충돌박스
 
 	//보호방패를 자식객체로..추가하기//
-	AddChildObject(new Shield(0, 0));
+	AddChildObject(new Shield(-12, -8));
 }
 
 void Player::Update()
@@ -177,20 +177,20 @@ void Player::OnTriggerStay2D(Collider2D collision)
 	if (tag == "총알1")
 	{
 		//적기 총알1 충돌 피해
-		/**********************
+		/**********************/
 		hp = hp - 10;
 
 		if (hp <= 0)
 		{
 			Explode();
 		}
-		***********************/
+		/***********************/
 
 	}else if (tag == "적기")
 	{
-		/**************
+		/**************/
 		Explode();
-		**************/
+		/**************/
 	}
 	else if (tag == "레이저아이템")
 	{

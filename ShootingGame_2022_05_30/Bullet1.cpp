@@ -33,7 +33,7 @@ void Bullet1::OnTriggerStay2D(Collider2D collision)
 {
 	string tag = collision.tag;
 
-	if (tag == "플레이어")
+	if (tag == "플레이어" || tag=="방패")
 	{
 		//블릿 폭발 효과
 		float px, py;

@@ -114,6 +114,12 @@ void GameObject::SetPx(float px)
 	{
 		colliders[i].Translate(dx, 0);
 	}
+
+	//자식객체에..좌표 변경량 만큼..이동시키기
+	for (int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->Translate(dx, 0);
+	}
 }
 
 void GameObject::SetPy(float py)
@@ -126,6 +132,12 @@ void GameObject::SetPy(float py)
 	for (int i = 0; i < colliders.size(); i++)
 	{
 		colliders[i].Translate(0, dy);
+	}
+
+	//자식객체에..좌표 변경량 만큼..이동시키기
+	for (int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->Translate(0, dy);
 	}
 }
 
@@ -141,6 +153,12 @@ void GameObject::Translate(float x, float y)
 	{
 		colliders[i].Translate(x, y);
 	}
+
+	//자식객체..이동하기
+	for (int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->Translate(x, y);
+	}
 }
 
 GameObject* GameObject::Instantiate(GameObject* obj)
@@ -153,6 +171,12 @@ GameObject* GameObject::Instantiate(GameObject* obj)
 void GameObject::Destroy(GameObject* obj)
 {
 	ObjectManager::Destroy(obj);
+
+	//obj의 자식객체 삭제하기
+	for (int i = 0; i < obj->childObjects.size(); i++)
+	{
+		ObjectManager::Destroy(obj->childObjects[i]);
+	}
 }
 
 void GameObject::AddBoxCollider2D(float x, float y, float width, float height)
@@ -180,5 +204,12 @@ bool GameObject::GetDead()
 
 void GameObject::AddChildObject(GameObject* obj)
 {
+	//자식객첵 목록에 추가하기
 	childObjects.push_back(obj);
+
+	//자식객체의 원점(0,0)을 부모객체의 px, py를 기준으로 하기
+	obj->Translate(px, py);
+
+	//게임오브젝트 목록에 추가하기
+	ObjectManager::Instantiate(obj);
 }
