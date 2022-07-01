@@ -202,7 +202,7 @@ bool GameObject::GetDead()
 	return isDead;
 }
 
-void GameObject::AddChildObject(GameObject* obj)
+GameObject* GameObject::AddChildObject(GameObject* obj)
 {
 	//자식객첵 목록에 추가하기
 	childObjects.push_back(obj);
@@ -212,4 +212,20 @@ void GameObject::AddChildObject(GameObject* obj)
 
 	//게임오브젝트 목록에 추가하기
 	ObjectManager::Instantiate(obj);
+
+	//추가되는 자식 객체 포인터 반환
+	return obj;
+}
+
+GameObject* GameObject::Find(string name)
+{
+	for (int i = 0; i < childObjects.size(); i++)
+	{
+		if (childObjects[i]->GetName() == name)
+		{
+			return childObjects[i];
+		}
+	}
+
+	return nullptr;  //for 문에서..이름이 같은..자식을 찾지못할 경우
 }

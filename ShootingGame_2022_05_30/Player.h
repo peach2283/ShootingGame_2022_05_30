@@ -14,6 +14,8 @@ private:
 	float fireTimer;   //발사 시간 측정 변수
 	float fireDelay;   //발사간 대기 시간
 
+	float shieldTimer;  //방패 시간측정 변수
+
 public:
 	Player(float px, float py);
 	~Player();

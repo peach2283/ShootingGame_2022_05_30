@@ -85,6 +85,9 @@ public:
 	bool GetDead();  //삭제 표시 가져오기
 
 	//자식 게임오브젝트 추가함수
-	void AddChildObject(GameObject* obj);
+	GameObject * AddChildObject(GameObject* obj);
+
+	//이름으로..자식객체 찾기
+	GameObject* Find(string name);
 };
 

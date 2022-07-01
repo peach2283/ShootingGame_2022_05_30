@@ -16,6 +16,7 @@ Enemy::Enemy(float px, float py) : Animation("적기","", true, px, py, 1)
 	this->hasBombTrigger   = false;
 	this->hasLaserTrigger  = false;
 	this->hasPlayerTrigger = false;
+	this->hasShieldTrigger = false;
 
 	this->dropLaserItem = false;
 	this->dropBombItem  = false;
@@ -129,6 +130,7 @@ void Enemy::Update()
 	hasBombTrigger   = false;
 	hasLaserTrigger  = false;
 	hasPlayerTrigger = false;
+	hasShieldTrigger = false;
 }
 
 void Enemy::OnDestroy()
@@ -191,7 +193,15 @@ void Enemy::OnTriggerStay2D(Collider2D collision)
 				hasBombTrigger = true;
 				Explode();
 			}
-		}	
+		}
+		else if (tag == "방패")
+		{
+			if (hasShieldTrigger == false)
+			{
+				hasShieldTrigger = true;  //충돌했음을..표시
+				Explode();
+			}
+		}
 }
 
 void Enemy::Explode()

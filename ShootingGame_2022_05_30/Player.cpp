@@ -10,6 +10,8 @@ Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 2)
 
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //발사간 지연시간
+
+	this->shieldTimer = 5; //방패 지속시간
 }
 
 Player::~Player()
@@ -50,6 +52,14 @@ void Player::Update()
 {		
 	Move();  //이동 함수
 	Fire();	 //발사 함수
+
+	//방패 시간 측정하기//
+	shieldTimer = shieldTimer - Time::deltaTime;
+
+	if (shieldTimer <= 0)
+	{
+		//방패 동작하지 않게하기 (방패 비활성화하기)
+	}
 }
 	
 void Player::Move()  //이동 함수
