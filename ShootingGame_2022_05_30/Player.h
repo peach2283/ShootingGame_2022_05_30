@@ -27,6 +27,8 @@ public:
 	void Start();
 	void Update();
 
+	void Appear();
+
 	void Move();		//이동 함수
 	void Fire();		//발사 함수
 	void ShieldTimer(); //방패 함수

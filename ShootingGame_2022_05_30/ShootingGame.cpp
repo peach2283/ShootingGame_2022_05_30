@@ -39,9 +39,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     //게임오브젝트들(배경, 플레이어) 추가하기    
     ObjectManager::Instantiate(new GameBG(0     ,   0));
-    ObjectManager::Instantiate(new Player(240 - 34, 650));
+    ObjectManager::Instantiate(new Player(240 - 34, 850));
 
     ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    ObjectManager::Instantiate(new GameManager(0, 0));
 
     //보호방태 테스트하기
     //ObjectManager::Instantiate(new Shield(0, 0));

@@ -5,14 +5,15 @@ Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 2)
 	this->hp		 = 100;
 	this->speed      = 200;
 	
-	this->laserCount = 1;   //아이템을 획득하면..발사갯수 증가
-	this->bombCount  = 3;   //플레이어 폭탄 갯수
+	this->laserCount  = 1;   //아이템을 획득하면..발사갯수 증가
+	this->bombCount   = 3;   //플레이어 폭탄 갯수
 
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //발사간 지연시간
 
 	this->shieldTimer = 5;            //방패 지속시간
 	this->state       = State::appear;//플레이어 초기상태
+
 }
 
 Player::~Player()
@@ -55,6 +56,7 @@ void Player::Update()
 	{
 		case State::appear:
 		{
+			Appear();
 		}
 		break;
 
@@ -67,7 +69,17 @@ void Player::Update()
 		break;
 	}
 }
-	
+
+void Player::Appear()
+{
+	Translate(0, -speed * Time::deltaTime);
+
+	if (GetPy() <= 650)
+	{
+		state = State::control;  //플레이어의 상태전이(control)
+	}
+}
+
 void Player::Move()  //이동 함수
 {
 	/////////////플레이어 이동하기/////////////////
@@ -258,6 +270,8 @@ void Player::Explode()
 	//플레이어 제거
 	Destroy(this);
 
+	//플레이어 카운트..감소
+
 	//플레이어 리스폰 [참고.. 남은 게임수에 따라서..]
-	//ObjectManager::Instantiate(new Player(240 - 34, 650));
+	ObjectManager::Instantiate(new Player(240 - 34, 850));
 }

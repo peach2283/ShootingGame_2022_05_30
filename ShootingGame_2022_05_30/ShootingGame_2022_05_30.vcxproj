@@ -161,6 +161,7 @@
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameBG.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="Input.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="GameBG.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Input.cpp" />

@@ -24,3 +24,4 @@
 #include "LaserItem.h"
 #include "BombItem.h"
 #include "Shield.h"
+#include "GameManager.h"
