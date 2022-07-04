@@ -4,6 +4,8 @@
 
 class Player : public Animation
 {
+	enum class State {appear = 0, control = 1};
+
 private:
 	float hp;   //플레이어 체력[참고...나중에 GameManager로 이동함]
 
@@ -16,6 +18,8 @@ private:
 
 	float shieldTimer;  //방패 시간측정 변수
 
+	State state;  //플레이어 상태 변수
+
 public:
 	Player(float px, float py);
 	~Player();
@@ -23,8 +27,9 @@ public:
 	void Start();
 	void Update();
 
-	void Move();  //이동 함수
-	void Fire();  //발사 함수
+	void Move();		//이동 함수
+	void Fire();		//발사 함수
+	void ShieldTimer(); //방패 함수
 
 	//충돌 이벤트 함수...오바라이딩
 	void OnTriggerStay2D(Collider2D collision);

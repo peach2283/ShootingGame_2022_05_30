@@ -11,7 +11,8 @@ Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 2)
 	this->fireTimer = 0;   
 	this->fireDelay = 0.2; //발사간 지연시간
 
-	this->shieldTimer = 5; //방패 지속시간
+	this->shieldTimer = 5;            //방패 지속시간
+	this->state       = State::appear;//플레이어 초기상태
 }
 
 Player::~Player()
@@ -49,16 +50,21 @@ void Player::Start()
 }
 
 void Player::Update()
-{		
-	Move();  //이동 함수
-	Fire();	 //발사 함수
-
-	//방패 시간 측정하기//
-	shieldTimer = shieldTimer - Time::deltaTime;
-
-	if (shieldTimer <= 0)
+{	
+	switch (state)
 	{
-		//방패 동작하지 않게하기 (방패 비활성화하기)
+		case State::appear:
+		{
+		}
+		break;
+
+		case State::control:
+		{
+			Move();			//이동 함수
+			Fire();			//발사 함수
+			ShieldTimer();  //방패 시간 측정하기//
+		}
+		break;
 	}
 }
 	
@@ -175,6 +181,25 @@ void Player::Fire()  //발사 함수
 		}
 		else {
 			cout << "남은 폭탄이 없습니다" << endl;
+		}
+	}
+}
+
+void Player::ShieldTimer()
+{
+	shieldTimer = shieldTimer - Time::deltaTime;
+
+	if (shieldTimer <= 0)
+	{
+		//방패 동작하지 않게하기 (방패 비활성화하기)
+		GameObject* shield = Find("방패");
+
+		if (shield != nullptr)
+		{
+			shield->SetActive(false);
+		}
+		else {
+			cout << "방패 자식 객체를 찾지 못함" << endl;
 		}
 	}
 }

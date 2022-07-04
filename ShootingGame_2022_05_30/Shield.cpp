@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Shield::Shield(float px, float py) : Animation("방패", "", true, px, py, 3)
+Shield::Shield(float px, float py) : Animation("방패", "방패", true, px, py, 3)
 {}
 
 Shield::~Shield()
