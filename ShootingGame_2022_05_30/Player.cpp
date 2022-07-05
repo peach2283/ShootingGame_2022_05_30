@@ -13,7 +13,6 @@ Player::Player(float px, float py) :Animation("플레이어", "", true, px, py, 2)
 
 	this->shieldTimer = 5;            //방패 지속시간
 	this->state       = State::appear;//플레이어 초기상태
-
 }
 
 Player::~Player()
@@ -270,8 +269,7 @@ void Player::Explode()
 	//플레이어 제거
 	Destroy(this);
 
-	//플레이어 카운트..감소
-
-	//플레이어 리스폰 [참고.. 남은 게임수에 따라서..]
-	ObjectManager::Instantiate(new Player(240 - 34, 850));
+	//플레이어..리스폰하기
+	GameManager * manager=GameManager::Instance();
+	manager->RespawnPlayer();
 }

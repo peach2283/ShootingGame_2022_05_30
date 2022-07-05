@@ -163,6 +163,7 @@
     <ClInclude Include="GameBG.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Laser.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="GameBG.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Laser.cpp" />
