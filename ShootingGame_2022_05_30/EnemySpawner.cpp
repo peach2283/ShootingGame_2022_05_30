@@ -89,7 +89,7 @@ void EnemySpawner::Update()
 
 		case State::boss:
 		{
-			cout << "보스 스폰하기" << endl;
+			ObjectManager::Instantiate(new Boss(-6.5, 30));
 			state = State::finish;  //스포너 동작 종료
 		}
 		break;

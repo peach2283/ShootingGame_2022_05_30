@@ -111,6 +111,9 @@
     <ClInclude Include="GameOver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShootingGame_2022_05_30.rc">
@@ -211,6 +214,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

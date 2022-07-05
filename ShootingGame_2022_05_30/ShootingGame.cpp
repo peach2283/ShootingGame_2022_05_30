@@ -41,11 +41,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240 - 34, 850));
 
-    ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    //ObjectManager::Instantiate(new EnemySpawner(240, 2));
     ObjectManager::Instantiate(new GameManager(0, 0));
 
-    //보호방태 테스트하기
-    //ObjectManager::Instantiate(new Shield(0, 0));
+    //보스 테스트하기
+    ObjectManager::Instantiate(new Boss(-6.5 ,30));
 
     MSG msg;
 
