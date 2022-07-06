@@ -25,19 +25,33 @@ Animation::~Animation()
 	}
 }
 
-void Animation::AddSprite(const char* fileName, int x, int y, int width, int height, int clipId)
+void Animation::AddSprite(const char* fileName, int x, int y, int width, int height, int clipId, float pvx, float pvy)
 {
 	Image img;
 
+	//이미지 로드
 	BMP::ReadBMP(fileName, x, y, width, height, &img);
+
+	//피봇 매개변수 저장
+	img.pvx = pvx;
+	img.pvy = pvy;
+
+	//애니메이션 이미지로..추가함
 	sprites[clipId].push_back(img);
 }
 
-void Animation::AddSprite(const char* fileName, int clipId)
+void Animation::AddSprite(const char* fileName, int clipId, float pvx, float pvy)
 {
 	Image img;
 
+	//이미지..로드하기
 	BMP::ReadBMP(fileName, &img);
+
+	//피봇 매개변수 저장
+	img.pvx = pvx;
+	img.pvy = pvy;
+
+	//애니메이션 이미지로..추가
 	sprites[clipId].push_back(img);
 }
 
@@ -62,10 +76,15 @@ void Animation::SetSpeed(float speed)
 
 void Animation::Draw()
 {
+	//이미지..피봇
+	float pvx = sprites[clip][index].pvx;
+	float pvy = sprites[clip][index].pvy;
+
+	//현재 객체 좌표(position)
 	float px = GetPx();
 	float py = GetPy();
 
-	BMP::DrawBMP(px, py, &sprites[   clip   ][ index ]);
+	BMP::DrawBMP(px - pvx, py - pvy, &sprites[   clip   ][ index ]);
 
 	//이미지 인덱스..변경..시간 측정//
 	animTimer = animTimer + Time::deltaTime * speed;
