@@ -14,8 +14,8 @@ public:
 	Sprite(string tag, string name, bool active, float px, float py, int layer=0);
 	~Sprite();
 
-	void SetSprite(const char* fileName);
-	void SetSprite(const char* fileName, int x, int y, int width, int height);
+	void SetSprite(const char* fileName, float pvx=0, float pvy=0);
+	void SetSprite(const char* fileName, int x, int y, int width, int height, float pvx=0, float pvy=0);
 
 	void Draw();
 };

@@ -18,24 +18,38 @@ Sprite::~Sprite()
     }
 }
 
-void Sprite::SetSprite(const char* fileName)
+void Sprite::SetSprite(const char* fileName, float pvx, float pvy)
 {
+    //전체 이미지 로드하기
     BMP::ReadBMP(fileName, &sprite);
+
+    //피봇 저장하기
+    sprite.pvx = pvx;
+    sprite.pvy = pvy;
 }
 
-void Sprite::SetSprite(const char* fileName, int x, int y, int width, int height)
+void Sprite::SetSprite(const char* fileName, int x, int y, int width, int height, float pvx, float pvy)
 {
+    //이미지 로드하기
     BMP::ReadBMP(fileName, x, y, width, height, &sprite);
+
+    //피봇 매개변수... 저장하기
+    sprite.pvx = pvx;
+    sprite.pvy = pvy;
 }
 
 void Sprite::Draw()
 {
     if (enabled == true)
     {
+        //이미지 피봇 가져오기
+        float pvx = sprite.pvx;
+        float pvy = sprite.pvy;
+
         //객체 위치 가져오기//
         float px = GetPx();
         float py = GetPy();
 
-        BMP::DrawBMP(px, py, &sprite);
+        BMP::DrawBMP(px - pvx, py - pvy, &sprite);
     }
 }
