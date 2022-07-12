@@ -156,6 +156,7 @@
     <ClInclude Include="BoxCollider2D.h" />
     <ClInclude Include="Bullet1.h" />
     <ClInclude Include="BulletExp.h" />
+    <ClInclude Include="Cannon.h" />
     <ClInclude Include="Collider2D.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Enemy.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Gun.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserExp.h" />
@@ -173,6 +175,7 @@
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Propeller.h" />
+    <ClInclude Include="Radar.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Shield.h" />
@@ -193,6 +196,7 @@
     <ClCompile Include="BoxCollider2D.cpp" />
     <ClCompile Include="Bullet1.cpp" />
     <ClCompile Include="BulletExp.cpp" />
+    <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Collider2D.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -202,6 +206,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserExp.cpp" />
@@ -209,6 +214,7 @@
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Propeller.cpp" />
+    <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="ShipExp.cpp" />

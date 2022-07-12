@@ -29,3 +29,6 @@
 #include "Boss.h"
 #include "Propeller.h"
 #include "Wing.h"
+#include "Gun.h"
+#include "Cannon.h"
+#include "Radar.h"
