@@ -181,6 +181,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Wing.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="ShootingGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShootingGame_2022_05_30.rc" />

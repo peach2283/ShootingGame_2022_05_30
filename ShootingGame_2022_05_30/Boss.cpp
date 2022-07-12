@@ -22,6 +22,17 @@ void Boss::Start()
 	AddChildObject(new Propeller(302+16, 41+6));
 	AddChildObject(new Propeller(350+16, 41+6));
 	AddChildObject(new Propeller(398+16, 41+6));
+
+	//날개 자식 추가하기
+	AddChildObject(new Wing(298, 425, 30, 18,   256, 97));   //오른쪽 첫번째 
+	AddChildObject(new Wing(329, 426, 32, 16,   302, 94));   //오른쪽 두번째
+	AddChildObject(new Wing(364, 426, 32, 16,   350, 90));   //오른쪽 세번째
+	AddChildObject(new Wing(399, 426, 32, 16,   405, 84));   //오른쪽 네번째
+
+	AddChildObject(new Wing(404, 406, 28, 15,   206, 98));   //왼쪽 첫번째
+	AddChildObject(new Wing(369, 406, 32, 16,   158, 94));   //왼쪽 두번째
+	AddChildObject(new Wing(334, 406, 32, 16,   110, 90));   //왼쪽 세번째
+	AddChildObject(new Wing(299, 406, 32, 16,    62, 85));   //왼쪽 네번째
 }
 
 void Boss::Update()

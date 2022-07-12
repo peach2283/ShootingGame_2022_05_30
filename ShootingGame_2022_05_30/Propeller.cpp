@@ -19,6 +19,17 @@ void Propeller::Start()
 	AddSprite("Asset/프로펠러1.bmp", 182, 5, 28, 12,   0,   14, 6);
 	AddSprite("Asset/프로펠러1.bmp", 213, 5, 30, 12,   0,   15, 6);
 
+	//애니메이션..이미지들 추가하기 - 피해받은 애니메이션 (1번)
+	AddSprite("Asset/프로펠러2.bmp", 7, 4, 32, 48,     1,   16, 6);
+	AddSprite("Asset/프로펠러2.bmp", 42, 4, 31, 48,    1,   15, 6);
+	AddSprite("Asset/프로펠러2.bmp", 76, 4, 29, 48,    1,   15, 6);
+	AddSprite("Asset/프로펠러2.bmp", 108, 4, 31, 48,   1,   18, 6);
+
+	AddSprite("Asset/프로펠러2.bmp", 142, 4, 31, 48,    1, 17, 6);
+	AddSprite("Asset/프로펠러2.bmp", 176, 4, 32, 48,    1, 16, 6);
+	AddSprite("Asset/프로펠러2.bmp", 210, 4, 31, 48,    1, 16, 6);
+	AddSprite("Asset/프로펠러2.bmp", 244, 4, 32, 48,    1, 16, 6);
+
 	//애니메이션 속도
 	SetSpeed(4);
 }

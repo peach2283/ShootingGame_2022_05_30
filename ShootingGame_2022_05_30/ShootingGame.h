@@ -28,3 +28,4 @@
 #include "GameOver.h"
 #include "Boss.h"
 #include "Propeller.h"
+#include "Wing.h"
