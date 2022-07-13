@@ -4,6 +4,8 @@
 class Boss : public Sprite
 {
 private:
+	float speed;
+
 public:
 	Boss(float px, float py);
 	~Boss();

@@ -50,21 +50,34 @@ void Propeller::OnTriggerStay2D(Collider2D collision)
 	{
 		//레이저 피해 적용(체력 감소)
 		hp = hp - 10;
-
-		//일정 피해를 받으면..애니메이션 변경
-
-		//체력이 모두 없어지면..제거 / 폭발
+		
+		if (hp < 50)
+		{
+			//일정 피해를 받으면..애니메이션 변경
+			Play(1);
+		}
+		
 		if (hp <= 0)
 		{
-			//폭발 
-			float px, py;
-			GetPosition(px, py);
-
-			Instantiate(new BossChildExp(px-14, py-8));
-
-			//자식 객체 제거(버그가 발생할수 있음)
-			Destroy(this);
+			//체력이 모두 없어지면..제거 / 폭발
+			Explode();			
 		}
 	}
+	else if (tag == "폭탄폭발")
+	{
+		//제거/폭발
+		Explode();
+	}
+}
 
+void Propeller::Explode()
+{
+	//폭발 
+	float px, py;
+	GetPosition(px, py);
+
+	Instantiate(new BossChildExp(px - 14, py - 8));
+
+	//자식 객체 제거(버그가 발생할수 있음)
+	Destroy(this);
 }

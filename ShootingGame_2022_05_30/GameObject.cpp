@@ -170,7 +170,15 @@ GameObject* GameObject::Instantiate(GameObject* obj)
 
 void GameObject::Destroy(GameObject* obj)
 {
+	//ObjectManager의 목록에서 제거하기
 	ObjectManager::Destroy(obj);
+
+	//obj가 자식객체일때...부모객체에서..제거하기
+	//(obj가 보스의 자식인 프로펠러일때..보스의 자식목록에서..프로펠러를 제거함)
+
+
+
+
 
 	//obj의 자식객체 삭제하기
 	for (int i = 0; i < obj->childObjects.size(); i++)

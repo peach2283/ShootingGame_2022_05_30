@@ -1,7 +1,9 @@
 #include "ShootingGame.h"
 
 Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
-{}
+{
+	this->speed = 20;
+}
 
 Boss::~Boss()
 {}
@@ -56,4 +58,7 @@ void Boss::Start()
 }
 
 void Boss::Update()
-{}
+{
+	//보스 이동하기
+	Translate(0, speed * Time::deltaTime);
+}
