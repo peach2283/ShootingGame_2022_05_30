@@ -34,7 +34,7 @@ void Laser::OnTriggerStay2D(Collider2D collision)
 {
 	string tag = collision.tag;
 
-	if (tag == "적기")
+	if (tag == "적기" || tag == "프로펠러")
 	{
 		//레이저 폭발 효과
 		float px, py;

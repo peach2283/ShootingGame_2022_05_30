@@ -1,7 +1,9 @@
 #include "ShootingGame.h"
 
-Propeller::Propeller(float px, float py) : Animation("", "", true, px, py, 2)
-{}
+Propeller::Propeller(float px, float py) : Animation("프로펠러", "", true, px, py, 2)
+{
+	this->hp = 100;
+}
 
 Propeller::~Propeller()
 {}
@@ -32,7 +34,37 @@ void Propeller::Start()
 
 	//애니메이션 속도
 	SetSpeed(4);
+
+	//충돌체 추가하기
+	AddBoxCollider2D(-9, -4, 18, 10);
 }
 
 void Propeller::Update()
 {}
+
+void Propeller::OnTriggerStay2D(Collider2D collision)
+{
+	string tag = collision.tag;
+
+	if (tag == "레이저")
+	{
+		//레이저 피해 적용(체력 감소)
+		hp = hp - 10;
+
+		//일정 피해를 받으면..애니메이션 변경
+
+		//체력이 모두 없어지면..제거 / 폭발
+		if (hp <= 0)
+		{
+			//폭발 
+			float px, py;
+			GetPosition(px, py);
+
+			Instantiate(new BossChildExp(px-14, py-8));
+
+			//자식 객체 제거(버그가 발생할수 있음)
+			Destroy(this);
+		}
+	}
+
+}
