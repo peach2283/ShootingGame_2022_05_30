@@ -1,7 +1,9 @@
 #include "ShootingGame.h"
 
-Radar::Radar(float px, float py) : Sprite("", "", true, px, py, 2)
-{}
+Radar::Radar(float px, float py) : Sprite("º¸½ºÀÚ½Ä", "", true, px, py, 2)
+{
+	this->hp = 100;
+}
 
 Radar::~Radar()
 {}
@@ -9,7 +11,36 @@ Radar::~Radar()
 void Radar::Start()
 {
 	SetSprite("Asset/º¸½º.bmp", 360, 245, 11, 9);
+	AddBoxCollider2D(0, 0, 11, 9);
 }
 
 void Radar::Update()
 {}
+
+void Radar::OnTriggerStay2D(Collider2D collision)
+{
+	string tag = collision.tag;
+
+	if (tag == "·¹ÀÌÀú")
+	{
+		hp = hp - 10;
+
+		if (hp <= 0)
+		{
+			Explode();
+		}
+	}
+	else if (tag == "ÆøÅºÆø¹ß")
+	{
+		Explode();
+	}
+}
+
+void Radar::Explode()
+{
+	float px, py;
+	GetPosition(px, py);
+
+	Instantiate(new BossChildExp(px, py));
+	Destroy(this);
+}

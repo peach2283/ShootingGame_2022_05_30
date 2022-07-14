@@ -232,11 +232,11 @@ void Player::OnTriggerStay2D(Collider2D collision)
 		}
 		***********************/
 
-	}else if (tag == "적기")
+	}else if (tag == "적기" || tag == "보스자식")
 	{
 		/**************
 		Explode();
-		**************/
+		*************/
 	}
 	else if (tag == "레이저아이템")
 	{

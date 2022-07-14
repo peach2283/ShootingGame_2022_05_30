@@ -1,7 +1,9 @@
 #include "ShootingGame.h"
 
 Gun::Gun(float px, float py) : Sprite("º¸½ºÀÚ½Ä", "", true, px, py, 2)
-{}
+{
+	this->hp = 100;
+}
 
 Gun::~Gun()
 {}
@@ -15,3 +17,31 @@ void Gun::Start()
 
 void Gun::Update()
 {}
+
+void Gun::OnTriggerStay2D(Collider2D collision)
+{
+	string tag = collision.tag;
+
+	if (tag == "·¹ÀÌÀú")
+	{
+		hp = hp - 10;
+
+		if (hp <= 10)
+		{
+			Explode();
+		}	
+	}
+	else if (tag == "ÆøÅºÆø¹ß")
+	{
+		Explode();
+	}
+}
+
+void Gun::Explode()
+{
+	float px, py;
+	GetPosition(px, py);
+
+	Instantiate(new BossChildExp(px - 5, py - 5));
+	Destroy(this);
+}
