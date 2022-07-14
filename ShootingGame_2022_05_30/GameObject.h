@@ -30,6 +30,9 @@ private:
 	//게임오브젝트에..자식게임오브젝트 추가하기//
 	vector<GameObject*> childObjects;
 
+	//자식객체일 경우에...부모객체의 포인터 저장하는 변수
+	GameObject* parent;
+
 public:
 	//생성자, 소멸자//
 	GameObject(string tag, string name, bool active, float px, float py, int layer=0);

@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Propeller::Propeller(float px, float py) : Animation("프로펠러", "", true, px, py, 2)
+Propeller::Propeller(float px, float py) : Animation("보스자식", "", true, px, py, 2)
 {
 	this->hp = 100;
 }

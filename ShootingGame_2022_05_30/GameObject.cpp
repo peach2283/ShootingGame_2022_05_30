@@ -10,7 +10,8 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py,
 	this->px = px;
 	this->py = py;
 
-	this->isDead = false; //생성자에서는 삭제대상 아님으로 표시
+	this->isDead = false;   //생성자에서는 삭제대상 아님으로 표시
+	this->parent = nullptr; //생성자에서는 부모객체가 없는 걸로..초기화
 }
 
 GameObject::~GameObject()
@@ -174,11 +175,16 @@ void GameObject::Destroy(GameObject* obj)
 	ObjectManager::Destroy(obj);
 
 	//obj가 자식객체일때...부모객체에서..제거하기
-	//(obj가 보스의 자식인 프로펠러일때..보스의 자식목록에서..프로펠러를 제거함)
-
-
-
-
+	if (obj->parent != nullptr)  //obj의 parent가 nullptr아 아니므로..자식객체임
+	{
+		for (int i = 0; i < obj->parent->childObjects.size(); i++)
+		{
+			if (obj->parent->childObjects[i] == obj)
+			{
+				obj->parent->childObjects.erase( obj->parent->childObjects.begin() + i );
+			}
+		}	
+	}
 
 	//obj의 자식객체 삭제하기
 	for (int i = 0; i < obj->childObjects.size(); i++)
@@ -212,6 +218,9 @@ bool GameObject::GetDead()
 
 GameObject* GameObject::AddChildObject(GameObject* obj)
 {
+	//자식객체(obj)에 부모 포인터(this)를 저장
+	obj->parent = this;
+
 	//자식객첵 목록에 추가하기
 	childObjects.push_back(obj);
 

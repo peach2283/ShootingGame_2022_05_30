@@ -60,5 +60,5 @@ void Boss::Start()
 void Boss::Update()
 {
 	//보스 이동하기
-	Translate(0, speed * Time::deltaTime);
+	//Translate(0, speed * Time::deltaTime);
 }
