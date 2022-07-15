@@ -45,3 +45,9 @@ void Gun::Explode()
 	Instantiate(new BossChildExp(px - 5, py - 5));
 	Destroy(this);
 }
+
+void Gun::OnDestroy()
+{
+	GameObject* parent = GetParent();
+	((Boss*)parent)->OnChildDestroy("°Ç");
+}

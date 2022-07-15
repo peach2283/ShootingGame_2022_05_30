@@ -44,3 +44,9 @@ void Radar::Explode()
 	Instantiate(new BossChildExp(px, py));
 	Destroy(this);
 }
+
+void Radar::OnDestroy()
+{
+	GameObject* parent = GetParent();
+	((Boss*)parent)->OnChildDestroy("∑π¿Ã¥ı");
+}

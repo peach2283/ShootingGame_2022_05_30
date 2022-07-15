@@ -44,3 +44,9 @@ void Cannon::Explode()
 	Instantiate(new BossChildExp(px, py));
 	Destroy(this);
 }
+
+void Cannon::OnDestroy()
+{
+	GameObject* parent = GetParent();
+	((Boss*)parent)->OnChildDestroy("Ä³³í");
+}

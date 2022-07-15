@@ -246,3 +246,8 @@ GameObject* GameObject::Find(string name)
 
 	return nullptr;  //for 문에서..이름이 같은..자식을 찾지못할 경우
 }
+
+GameObject* GameObject::GetParent()
+{
+	return parent;
+}

@@ -14,7 +14,7 @@ void Boss::Start()
 	SetSprite("Asset/보스.bmp", 0, 0, 493, 206);
 
 	//보스 폭발 후 이미지 추가//
-	//SetSprite("Asset/보스.bmp", 0, 613, 385, 182, -35, 0);
+	//SetSprite("Asset/보스.bmp", 0, 613, 385, 182, -47, -13);
 
 	//프로펠러..자식 객체 추가하기
 	AddChildObject(new Propeller( 63+16, 41+6));
@@ -61,4 +61,9 @@ void Boss::Update()
 {
 	//보스 이동하기
 	//Translate(0, speed * Time::deltaTime);
+}
+
+void Boss::OnChildDestroy(string name)
+{
+	cout << "보스의 자식 객체가 제거됨 : " << name << endl;
 }

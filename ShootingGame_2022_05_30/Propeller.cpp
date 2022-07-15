@@ -81,3 +81,9 @@ void Propeller::Explode()
 	//자식 객체 제거(버그가 발생할수 있음)
 	Destroy(this);
 }
+
+void Propeller::OnDestroy()
+{
+	GameObject* parent = GetParent();
+	((Boss*)parent)->OnChildDestroy("프로펠러");
+}

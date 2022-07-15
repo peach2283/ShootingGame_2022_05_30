@@ -20,5 +20,8 @@ public:
 
 	void OnTriggerStay2D(Collider2D collision);
 	void Explode();
+
+	//Destroy 이벤트..함수
+	void OnDestroy();
 };
 

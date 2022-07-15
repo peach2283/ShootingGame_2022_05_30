@@ -50,5 +50,13 @@ void Wing::Explode()
 	GetPosition(px, py);
 
 	Instantiate(new BossChildExp(px, py));
-	Destroy(this);
+	Destroy(this);  	
+}
+
+void Wing::OnDestroy()
+{
+	//ºÎ¸ð °´Ã¼ÀÎ º¸½º¿¡..ÀÚ½ÄÀÌ Æø¹ßµÊÀ» ¾Ë·ÁÁÜ
+	GameObject* parent = GetParent();
+
+	((Boss*)parent)->OnChildDestroy("³¯°³");
 }

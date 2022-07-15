@@ -92,5 +92,8 @@ public:
 
 	//이름으로..자식객체 찾기
 	GameObject* Find(string name);
+
+	//parent 게터
+	GameObject* GetParent();
 };
 
