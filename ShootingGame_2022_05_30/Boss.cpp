@@ -2,7 +2,10 @@
 
 Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
 {
-	this->speed = 20;
+	this->speed      = 50;
+	this->childCount = 0;
+	this->state      = State::appear;
+	this->fallTimer  = 3;
 }
 
 Boss::~Boss()
@@ -12,9 +15,6 @@ void Boss::Start()
 {
 	//보스 기본 이미지 추가//
 	SetSprite("Asset/보스.bmp", 0, 0, 493, 206);
-
-	//보스 폭발 후 이미지 추가//
-	//SetSprite("Asset/보스.bmp", 0, 613, 385, 182, -47, -13);
 
 	//프로펠러..자식 객체 추가하기
 	AddChildObject(new Propeller( 63+16, 41+6));
@@ -35,7 +35,6 @@ void Boss::Start()
 	AddChildObject(new Wing(369, 406, 32, 16,   158, 94));   //왼쪽 두번째
 	AddChildObject(new Wing(334, 406, 32, 16,   110, 90));   //왼쪽 세번째
 	AddChildObject(new Wing(299, 406, 32, 16,    62, 85));   //왼쪽 네번째
-
 
 	//건 자식 추가하기
 	AddChildObject(new Gun(94 , 71));
@@ -59,6 +58,39 @@ void Boss::Start()
 
 void Boss::Update()
 {
+	switch (state)
+	{
+	 case State::appear:
+
+		  Translate(0, speed * Time::deltaTime);
+
+		  if (GetPy() >= 30)
+		  {
+			  state = State::attack; //attack  상태전이
+		  }
+
+		  break;
+
+	 case State::attack:
+		 break;
+	
+	 case State::fall:
+
+		 //이동하기
+		 Translate(0, speed * Time::deltaTime);
+
+		 //추락 시간측정
+		 fallTimer = fallTimer - Time::deltaTime;
+
+		 if (fallTimer <= 0)
+		 {
+			//스테이지 클리어
+			 cout << "스테이지 클리어" << endl;
+		 }
+
+		 break;
+	}
+
 	//보스 이동하기
 	//Translate(0, speed * Time::deltaTime);
 }
@@ -66,4 +98,25 @@ void Boss::Update()
 void Boss::OnChildDestroy(string name)
 {
 	cout << "보스의 자식 객체가 제거됨 : " << name << endl;
+
+	childCount++;
+
+	//if (childCount == 25)  //모든 자식객체가..파괴됨
+	if(childCount >=1)
+	{
+		//보스 폭발
+		float px, py;
+		GetPosition(px, py);
+
+		Instantiate(new ShipExp(px + 170, py + 20));
+
+		Instantiate(new ShipExp(px + 170 - 130 , py + 20));
+		Instantiate(new ShipExp(px + 170 + 130 , py + 20));
+
+		//보스의..폭발이미지 변경		
+		SetSprite("Asset/보스.bmp", 0, 613, 385, 182, -47, -13);
+
+		//보스를 추락상태로..변경하기
+		state = State::fall;
+	}
 }

@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameManager(0, 0));
 
     //보스 테스트하기
-    ObjectManager::Instantiate(new Boss(-6.5 ,30));
+    ObjectManager::Instantiate(new Boss(-6.5 ,-200));
 
     MSG msg;
 
