@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Bullet1::Bullet1(float px, float py) : Sprite("ÃÑ¾Ë1", "", true, px, py, 1)
+Bullet1::Bullet1(float px, float py) : Sprite("ÃÑ¾Ë1", "", true, px, py, 3)
 {
 	this->speed    = 200;
 	this->lifeTime = 8;

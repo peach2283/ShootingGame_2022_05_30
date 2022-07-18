@@ -13,6 +13,9 @@ private:
 
 	float fallTimer;  //추락시간 측정 타이머
 
+	float fireTimer; //발사시간 측정
+	float fireDelay; //발사간 지연시간
+
 public:
 	Boss(float px, float py);
 	~Boss();

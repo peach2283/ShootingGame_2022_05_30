@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Gun::Gun(float px, float py) : Sprite("보스자식", "", true, px, py, 2)
+Gun::Gun(float px, float py, string name) : Sprite("보스자식", name, true, px, py, 2)
 {
 	this->hp = 100;
 }
@@ -17,6 +17,15 @@ void Gun::Start()
 
 void Gun::Update()
 {}
+
+void Gun::Fire()
+{
+	//블릿 발사하기//
+	float px, py;
+	GetPosition(px, py);
+
+	Instantiate(new Bullet1(px+1, py+15));
+}
 
 void Gun::OnTriggerStay2D(Collider2D collision)
 {

@@ -7,7 +7,7 @@ private:
 	float hp;
 
 public:
-	Gun(float px, float py);
+	Gun(float px, float py, string name);
 	~Gun();
 
 	void Start();
@@ -17,5 +17,7 @@ public:
 	void Explode();
 
 	void OnDestroy();
+
+	void Fire();
 };
 

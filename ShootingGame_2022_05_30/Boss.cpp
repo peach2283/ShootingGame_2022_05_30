@@ -6,6 +6,9 @@ Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
 	this->childCount = 0;
 	this->state      = State::appear;
 	this->fallTimer  = 3;
+
+	this->fireTimer = 0;
+	this->fireDelay = 1;
 }
 
 Boss::~Boss()
@@ -37,15 +40,15 @@ void Boss::Start()
 	AddChildObject(new Wing(299, 406, 32, 16,    62, 85));   //왼쪽 네번째
 
 	//건 자식 추가하기
-	AddChildObject(new Gun(94 , 71));
-	AddChildObject(new Gun(142, 71));
-	AddChildObject(new Gun(190, 71));
+	AddChildObject(new Gun(94 , 71, "건1"));
+	AddChildObject(new Gun(142, 71, "건2"));
+	AddChildObject(new Gun(190, 71, "건3"));
 
-	AddChildObject(new Gun(238, 63));
+	AddChildObject(new Gun(238, 63, "건4"));
 
-	AddChildObject(new Gun(286, 71));
-	AddChildObject(new Gun(334, 71));
-	AddChildObject(new Gun(382, 71));
+	AddChildObject(new Gun(286, 71, "건5"));
+	AddChildObject(new Gun(334, 71, "건6"));
+	AddChildObject(new Gun(382, 71, "건7"));
 
 	//대포 자식 추가하기
 	AddChildObject(new Cannon(270, 107));
@@ -72,6 +75,32 @@ void Boss::Update()
 		  break;
 
 	 case State::attack:
+		 {
+			 //발사시간 측정하기	
+			 fireTimer = fireTimer + Time::deltaTime;
+
+			 if (fireTimer >= fireDelay)
+			 {
+				 //부모인 보스가..자식(건들) 객체를 찾아서..공격을 알림//
+				 string gunName[7] = { "건1", "건2", "건3", "건4", "건5", "건6", "건7" };
+
+				 for (int i = 0; i < 7; i++)
+				 {
+					 GameObject* gun = Find(gunName[i]);
+
+					 if (gun != nullptr)
+					 {
+						 ((Gun*)gun)->Fire();  //자식객체 발사
+					 }
+					 else {
+						 cout << "자식 객체를 찾지 못함" << endl;
+					 }
+				 }
+
+				 fireTimer = 0;
+			 }
+		 }
+
 		 break;
 	
 	 case State::fall:
