@@ -1,6 +1,6 @@
 #include "ShootingGame.h"
 
-Cannon::Cannon(float px, float py) : Sprite("보스자식", "", true, px, py, 2)
+Cannon::Cannon(float px, float py, string name) : Sprite("보스자식", name, true, px, py, 2)
 {
 	this->hp = 100;
 }

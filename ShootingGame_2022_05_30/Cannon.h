@@ -7,7 +7,7 @@ private:
 	float hp;
 
 public:
-	Cannon(float px, float py);
+	Cannon(float px, float py, string name);
 	~Cannon();
 
 	void Start();

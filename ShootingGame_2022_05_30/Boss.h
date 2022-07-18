@@ -16,6 +16,37 @@ private:
 	float fireTimer; //발사시간 측정
 	float fireDelay; //발사간 지연시간
 
+	//건들의 발사 배열 인덱스
+	int fireIndex;
+
+	//건들의 발사 패턴 배열
+	bool firePattern[20][7] = { 
+									{true, true, true,     false,     false, false, false},
+									{true, true, true,     false,     false, false, false},
+									{true, true, true,     false,     false, false, false},
+									{true, true, true,     false,     false, false, false},
+									{true, true, true,     false,     false, false, false},
+
+									{false, false, false,     false,     true, true, true},
+									{false, false, false,     false,     true, true, true},
+									{false, false, false,     false,     true, true, true},
+									{false, false, false,     false,     true, true, true},
+									{false, false, false,     false,     true, true, true},
+
+									{false, true, false,     true,     false, true, false},
+									{false, true, false,     true,     false, true, false},
+									{false, true, false,     true,     false, true, false},
+									{false, true, false,     true,     false, true, false},
+									{false, true, false,     true,     false, true, false},
+
+									{true, true, true,     true,     true, true, true},
+									{true, true, true,     true,     true, true, true},
+									{true, true, true,     true,     true, true, true},
+									{true, true, true,     true,     true, true, true},
+
+								
+								};
+
 public:
 	Boss(float px, float py);
 	~Boss();

@@ -8,7 +8,8 @@ Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
 	this->fallTimer  = 3;
 
 	this->fireTimer = 0;
-	this->fireDelay = 1;
+	this->fireDelay = 0.5;
+	this->fireIndex = 0;
 }
 
 Boss::~Boss()
@@ -51,8 +52,8 @@ void Boss::Start()
 	AddChildObject(new Gun(382, 71, "건7"));
 
 	//대포 자식 추가하기
-	AddChildObject(new Cannon(270, 107));
-	AddChildObject(new Cannon(201, 107));
+	AddChildObject(new Cannon(270, 107, "캐논1"));
+	AddChildObject(new Cannon(201, 107, "캐논2"));
 
 	//레이더 자식 추가하기
 	AddChildObject(new Radar(241, 105));
@@ -76,6 +77,7 @@ void Boss::Update()
 
 	 case State::attack:
 		 {
+			 ////////////////////////보스 건 자식 객체...Fire////////////////////////////////
 			 //발사시간 측정하기	
 			 fireTimer = fireTimer + Time::deltaTime;
 
@@ -86,18 +88,43 @@ void Boss::Update()
 
 				 for (int i = 0; i < 7; i++)
 				 {
-					 GameObject* gun = Find(gunName[i]);
-
-					 if (gun != nullptr)
+					 if (firePattern[fireIndex][i] == true)
 					 {
-						 ((Gun*)gun)->Fire();  //자식객체 발사
-					 }
-					 else {
-						 cout << "자식 객체를 찾지 못함" << endl;
+						 GameObject* gun = Find(gunName[i]);
+
+						 if (gun != nullptr)
+						 {
+							 ((Gun*)gun)->Fire();  //자식객체 발사
+						 }
+						 else {
+							 cout << "자식 객체를 찾지 못함" << endl;
+						 }
 					 }
 				 }
 
 				 fireTimer = 0;
+				 fireIndex++; 
+
+				 if (fireIndex >= 20)
+				 {
+					 fireIndex = 0;
+				 }
+			 }
+
+			 /////////////////////보스 캐논 자식 객체 ....Fire////////////////////////////
+			 string cannonName[2] = { "캐논1", "캐논2" };
+
+			 for (int i = 0; i < 2; i++)
+			 {
+				 GameObject* cannon = Find(cannonName[i]);
+
+				 if (cannon != nullptr)
+				 {
+					//캐논 발사
+				 }
+				 else {
+					 cout << "자식 객체를 찾지 못함" << endl;
+				 }
 			 }
 		 }
 
