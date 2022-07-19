@@ -54,5 +54,11 @@ void Cannon::OnDestroy()
 void Cannon::Fire()
 {
 	//캐논 블릿 발사//
-	cout << "캐논 블릿 발사" << endl;
+	float px, py;
+	GetPosition(px, py);
+
+	for (int i = 0; i < 20 ; i++)
+	{
+		Instantiate(new Bullet2(px, py, i * 18));
+	}
 }

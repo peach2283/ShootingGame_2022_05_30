@@ -13,6 +13,7 @@ private:
 
 	float fallTimer;  //추락시간 측정 타이머
 
+	////////////////////////Gun 변수들////////////////////////////////////
 	float fireTimer; //발사시간 측정
 	float fireDelay; //발사간 지연시간
 
@@ -46,6 +47,23 @@ private:
 
 								
 								};
+
+	/////////////////캐논 변수들///////////////////////////////
+	float cannonFireTimer;
+	float cannonFireDelay;
+
+	bool  cannonFirePattern[10][2] = {  {true , true},
+										{false, false},
+										{true,  false},
+										{false, true},
+										{true,  true},
+
+										{false, false},
+										{true,  false},
+										{false, true},
+										{true,  false},
+										{false, true},
+										};
 
 public:
 	Boss(float px, float py);

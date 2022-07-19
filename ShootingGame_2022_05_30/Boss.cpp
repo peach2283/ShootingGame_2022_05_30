@@ -10,6 +10,9 @@ Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
 	this->fireTimer = 0;
 	this->fireDelay = 0.5;
 	this->fireIndex = 0;
+
+	this->cannonFireTimer = 0;
+	this->cannonFireDelay = 1;
 }
 
 Boss::~Boss()
@@ -112,20 +115,27 @@ void Boss::Update()
 			 }
 
 			 /////////////////////보스 캐논 자식 객체 ....Fire////////////////////////////
-			 string cannonName[2] = { "캐논1", "캐논2" };
+			 cannonFireTimer = cannonFireTimer + Time::deltaTime;
 
-			 for (int i = 0; i < 2; i++)
+			 if (cannonFireTimer >= cannonFireDelay)
 			 {
-				 GameObject* cannon = Find(cannonName[i]);
+				 string cannonName[2] = { "캐논1", "캐논2" };
 
-				 if (cannon != nullptr)
+				 for (int i = 0; i < 2; i++)
 				 {
-					 //캐논 발사
-					 ((Cannon*)cannon)->Fire();
+					 GameObject* cannon = Find(cannonName[i]);
+
+					 if (cannon != nullptr)
+					 {
+						 //캐논 발사
+						 ((Cannon*)cannon)->Fire();
+					 }
+					 else {
+						 cout << "자식 객체를 찾지 못함" << endl;
+					 }
 				 }
-				 else {
-					 cout << "자식 객체를 찾지 못함" << endl;
-				 }
+
+				 cannonFireTimer = 0; //타이머 리셋
 			 }
 		 }
 

@@ -135,6 +135,9 @@
     <ClInclude Include="Bullet2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Mathf.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShootingGame_2022_05_30.rc">
@@ -259,6 +262,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Bullet2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathf.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

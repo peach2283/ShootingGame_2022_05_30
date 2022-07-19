@@ -45,10 +45,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameManager(0, 0));
 
     //보스 테스트하기
-    //ObjectManager::Instantiate(new Boss(-6.5 ,-200));
+    ObjectManager::Instantiate(new Boss(-6.5 ,-200));
 
     //블릿2 테스트하기
-    ObjectManager::Instantiate(new Bullet2(240, 300));
+    //ObjectManager::Instantiate(new Bullet2(240, 300));
 
 
     MSG msg;
