@@ -50,3 +50,9 @@ void Cannon::OnDestroy()
 	GameObject* parent = GetParent();
 	((Boss*)parent)->OnChildDestroy("캐논");
 }
+
+void Cannon::Fire()
+{
+	//캐논 블릿 발사//
+	cout << "캐논 블릿 발사" << endl;
+}

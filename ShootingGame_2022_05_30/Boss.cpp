@@ -120,7 +120,8 @@ void Boss::Update()
 
 				 if (cannon != nullptr)
 				 {
-					//캐논 발사
+					 //캐논 발사
+					 ((Cannon*)cannon)->Fire();
 				 }
 				 else {
 					 cout << "자식 객체를 찾지 못함" << endl;

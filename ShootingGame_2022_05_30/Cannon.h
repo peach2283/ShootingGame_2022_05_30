@@ -17,5 +17,7 @@ public:
 	void Explode();
 
 	void OnDestroy();
+
+	void Fire();
 };
 
