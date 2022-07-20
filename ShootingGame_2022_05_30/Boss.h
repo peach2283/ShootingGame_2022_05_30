@@ -64,6 +64,7 @@ private:
 										{true,  false},
 										{false, true},
 										};
+	int cannonFireIndex;
 
 public:
 	Boss(float px, float py);

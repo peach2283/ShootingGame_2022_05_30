@@ -89,7 +89,7 @@ void EnemySpawner::Update()
 
 		case State::boss:
 		{
-			ObjectManager::Instantiate(new Boss(-6.5, 30));
+			Instantiate(new Boss(-6.5, -200));
 			state = State::finish;  //스포너 동작 종료
 		}
 		break;

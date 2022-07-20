@@ -1,9 +1,10 @@
 #include "ShootingGame.h"
 
-Bullet2::Bullet2(float px, float py, float angle) : Sprite("√—æÀ2", "", true, px, py, 1)
+Bullet2::Bullet2(float px, float py, float angle) : Sprite("√—æÀ2", "", true, px, py, 3)
 {
 	this->speed = 200;
 	this->angle = angle;
+	this->lifeTime = 8;
 }
 
 Bullet2::~Bullet2()
@@ -12,6 +13,7 @@ Bullet2::~Bullet2()
 void Bullet2::Start()
 {
 	SetSprite("Asset/√—æÀ2.bmp");
+	AddBoxCollider2D(0, 0, 17, 17);
 }
 
 void Bullet2::Update()
@@ -35,4 +37,29 @@ void Bullet2::Update()
 	float dy = ry * speed * Time::deltaTime;
 
 	Translate(dx, dy);
+
+	//∂Û¿Ã«¡ ≈∏¿” √¯¡§
+	lifeTime = lifeTime - Time::deltaTime;
+
+	if (lifeTime <= 0)
+	{
+		Destroy(this);
+	}
+}
+
+void Bullet2::OnTriggerStay2D(Collider2D collision)
+{
+	string tag = collision.tag;
+
+	if (tag == "«√∑π¿ÃæÓ" || tag == "πÊ∆–")
+	{
+		//∫Ì∏¥ ∆¯πﬂ »ø∞˙
+		float px, py;
+
+		GetPosition(px, py);
+		Instantiate(new BulletExp(px - 10, py - 10));
+
+		//∫Ì∏¥ ∞¥√º ¡¶∞≈
+		Destroy(this);
+	}
 }

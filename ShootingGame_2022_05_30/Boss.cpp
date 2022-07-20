@@ -13,6 +13,8 @@ Boss::Boss(float px, float py) : Sprite("", "", true, px, py, 1)
 
 	this->cannonFireTimer = 0;
 	this->cannonFireDelay = 1;
+
+	this->cannonFireIndex = 0;
 }
 
 Boss::~Boss()
@@ -123,19 +125,29 @@ void Boss::Update()
 
 				 for (int i = 0; i < 2; i++)
 				 {
-					 GameObject* cannon = Find(cannonName[i]);
-
-					 if (cannon != nullptr)
+					 if (cannonFirePattern[cannonFireIndex][i] == true)
 					 {
-						 //캐논 발사
-						 ((Cannon*)cannon)->Fire();
-					 }
-					 else {
-						 cout << "자식 객체를 찾지 못함" << endl;
+						 GameObject* cannon = Find(cannonName[i]);
+
+						 if (cannon != nullptr)
+						 {
+							 //캐논 발사
+							 ((Cannon*)cannon)->Fire();
+						 }
+						 else {
+							 cout << "자식 객체를 찾지 못함" << endl;
+						 }
 					 }
 				 }
 
 				 cannonFireTimer = 0; //타이머 리셋
+				 cannonFireIndex++;   //발사 패턴 배열 인덱스 증가
+
+				 if (cannonFireIndex >= 10)
+				 {
+					 cannonFireIndex = 0;
+				 }
+
 			 }
 		 }
 
@@ -168,8 +180,8 @@ void Boss::OnChildDestroy(string name)
 
 	childCount++;
 
-	//if (childCount == 25)  //모든 자식객체가..파괴됨
-	if(childCount >=1)
+	if (childCount == 25)  //모든 자식객체가..파괴됨
+	//if(childCount >=1)
 	{
 		//보스 폭발
 		float px, py;
