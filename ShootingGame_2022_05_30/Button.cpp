@@ -12,7 +12,9 @@ Button::~Button()
 void Button::Start()
 {
 	//이미지 버튼..로드하기
-	BMP::ReadBMP("Asset/UI/Button/Pause.bmp", &normalImg);  //버튼의 기본이미지 로드
+	BMP::ReadBMP("Asset/UI/Menu/normal.bmp", &normalImg);  //버튼의 기본이미지 로드
+	BMP::ReadBMP("Asset/UI/Menu/hover.bmp",  &hoverImg);   //버튼의 호버이미지 로드
+	BMP::ReadBMP("Asset/UI/Menu/active.bmp", &pressImg);   //버튼의 눌림이미지 로드
 }
 
 void Button::Update()
@@ -21,58 +23,60 @@ void Button::Update()
 	{
 		case State::normal:
 		{
-			cout << "normal 상태" << endl;
+			//cout << "normal 상태" << endl;
 
 			if (CheckMouseInRect() == true)
 			{
 				state = State::hover;
 			}
-
 		}
 		break;
 
 		case State::hover:
 		{
-			cout << "hover 상태 " << endl;
+			//cout << "hover 상태 " << endl;
 
-			if (Input::GetMouseButtonDown(0) == true)
+			if (Input::GetMouseButtonDown(0) == true) //마우스가 눌리면..press 상태
 			{
 				state = State::press;
 			}
-		
+			
+			if (CheckMouseInRect() == false) //마우스가 영역밖으로..나가면..normal 상태
+			{
+				state = State::normal;
+			}		
 		}
 		break;
 
 		case State::press:
 		{
-			cout << "Press 상태 " << endl;
+			//cout << "Press 상태 " << endl;
 
 			if (Input::GetMouseButtonUp(0) == true)
 			{
 				state = State::release;
 			}
 
+			if (CheckMouseInRect() == false) //마우스가 영역밖으로..나가면..normal 상태
+			{
+				state = State::normal;
+			}
 		}
 		break;
 
 		case State::release:
 		{
-			cout << "Release 상태 " << endl;
+			//cout << "Release 상태 " << endl;
 		
+			//버튼 클릭 동작..실행하기//
+			cout << "이미지 버튼 클릭 .. 동작 실행하기" << endl;
+
 			//버튼의 상태를..처음부터 다시 동작 시키기
 			state = State::normal;
 		}
 
 		break;
 	}
-
-	//마우스 눌림 검사하기//
-	/*************************************************
-	if (Input::GetMouseButtonDown(0) == true)
-	{
-		
-	}
-	*****************************************************/
 }
 
 void Button::Draw()
@@ -80,7 +84,18 @@ void Button::Draw()
 	float px, py;
 	GetPosition(px, py);
 
-	BMP::DrawBMP(px, py, &normalImg);
+	if (state == State::normal || state == State::release )
+	{
+		BMP::DrawBMP(px, py, &normalImg);
+	}
+	else if (state == State::hover)
+	{
+		BMP::DrawBMP(px, py, &hoverImg);
+	}
+	else if (state == State::press)
+	{
+		BMP::DrawBMP(px, py, &pressImg);
+	}
 }
 
 bool Button::CheckMouseInRect()

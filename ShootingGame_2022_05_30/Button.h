@@ -13,7 +13,7 @@ private:
 	//버튼 이미지 로드 구조체
 	Image normalImg;  //버튼의 기본 이미지
 	Image hoverImg;   //버튼에 마우스가 올라갔을때... 이미지
-	Image pushImg;    //버튼의 마우스가 눌렸을때  ... 이미지
+	Image pressImg;   //버튼의 마우스가 눌렸을때  ... 이미지
 
 	//버튼 상태 변수
 	State state;

@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameManager(0, 0));
 
     //버튼 테스트
-    ObjectManager::Instantiate(new Button("", "", true, 200,200));
+    //ObjectManager::Instantiate(new Button("", "", true, 200,200));
 
     MSG msg;
 

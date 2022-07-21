@@ -177,6 +177,7 @@
     <ClInclude Include="LaserItem.h" />
     <ClInclude Include="Mathf.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Pause.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Propeller.h" />
     <ClInclude Include="Radar.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="LaserItem.cpp" />
     <ClCompile Include="Mathf.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Propeller.cpp" />
     <ClCompile Include="Radar.cpp" />
