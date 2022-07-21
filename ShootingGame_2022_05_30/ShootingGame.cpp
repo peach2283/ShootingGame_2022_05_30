@@ -41,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::Instantiate(new GameBG(0     ,   0));
     ObjectManager::Instantiate(new Player(240 - 34, 850));
 
-    ObjectManager::Instantiate(new EnemySpawner(240, 2));
+    //ObjectManager::Instantiate(new EnemySpawner(240, 2));
     ObjectManager::Instantiate(new GameManager(0, 0));
 
     //버튼 테스트
