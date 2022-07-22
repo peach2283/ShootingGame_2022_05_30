@@ -39,6 +39,9 @@ void Button::Update()
 			if (Input::GetMouseButtonDown(0) == true) //마우스가 눌리면..press 상태
 			{
 				state = State::press;
+
+				//이미지의 눌림효과를 위해서..좌표 이동시켜보기///
+				Translate(0, 1);
 			}
 			
 			if (CheckMouseInRect() == false) //마우스가 영역밖으로..나가면..normal 상태
@@ -55,11 +58,17 @@ void Button::Update()
 			if (Input::GetMouseButtonUp(0) == true)
 			{
 				state = State::release;
+
+				//이미지 놓임 효과를 위해서..좌표 이동시키기///
+				Translate(0, -1);
 			}
 
 			if (CheckMouseInRect() == false) //마우스가 영역밖으로..나가면..normal 상태
 			{
 				state = State::normal;
+
+				//이미지 놓임 효과를 위해서..좌표 이동시키기///
+				Translate(0, -1);
 			}
 		}
 		break;
@@ -120,4 +129,19 @@ bool Button::CheckMouseInRect()
 	else {
 		return false;
 	}
+}
+
+void Button::SetNormalImg(const char* fileName)
+{
+	BMP::ReadBMP(fileName, &normalImg);
+}
+
+void Button::SetHoverImg(const char* fileName)
+{
+	BMP::ReadBMP(fileName, &hoverImg);
+}
+
+void Button::SetPressImg(const char* fileName)
+{
+	BMP::ReadBMP(fileName, &pressImg);
 }

@@ -47,6 +47,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //버튼 테스트
     //ObjectManager::Instantiate(new Button("", "", true, 200,200));
 
+    //Pause 버튼 추가하기
+    ObjectManager::Instantiate(new Pause(430, 5));
+
     MSG msg;
 
     // 기본 메시지 루프입니다:

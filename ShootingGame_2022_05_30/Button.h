@@ -29,5 +29,11 @@ public:
 
 	//마우스 좌표가..이미지 영역안에 있는지를 검사하는 함수
 	bool CheckMouseInRect();
+
+	//버튼 이미지 세터
+	void SetNormalImg(const char* fileName);
+	void SetHoverImg (const char* fileName);
+	void SetPressImg (const char* fileName);
+
 };
 
