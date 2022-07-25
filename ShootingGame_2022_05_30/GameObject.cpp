@@ -101,6 +101,12 @@ void GameObject::SetName(string name)
 void GameObject::SetActive(bool active)
 {
 	this->active = active;
+
+	//자식 목록의..자식 객체의 활성화 변경하기//
+	for (int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->SetActive(active);
+	}
 }
 
 void GameObject::SetPx(float px)

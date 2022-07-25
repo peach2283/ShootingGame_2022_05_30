@@ -24,6 +24,9 @@ void GameMenu::Start()
 
 	//윈도우로 나가기  버튼 자식 추가하기
 	AddChildObject(new QuitItem(12,     48 + 44 + 44));
+
+	//게임메뉴는 비활성화(이미지 출력 x, 클릭 동작 x)로 시작함
+	SetActive(false);
 }
 
 void GameMenu::Update()
