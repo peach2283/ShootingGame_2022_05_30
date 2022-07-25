@@ -53,6 +53,7 @@ public:
 	~ContinueItem();
 
 	void Start();
+	void OnClick();
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -65,6 +66,7 @@ public:
 	~RestartItem();
 
 	void Start();
+	void OnClick();
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -77,4 +79,5 @@ public:
 	~QuitItem();
 
 	void Start();
+	void OnClick();
 };

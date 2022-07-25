@@ -17,13 +17,17 @@ void GameMenu::Start()
 	AddChildObject(new MenuBG (0, 36));
 
 	//게임으로 돌아가기 버튼 자식 추가하기
+	AddChildObject(new ContinueItem(12, 48));
+
 	//게임 다시 시작하기 버튼 자식 추가하기
-	//타이틀로 나가기  버튼 자식 추가하기
+	AddChildObject(new RestartItem(12,  48 + 44));
+
+	//윈도우로 나가기  버튼 자식 추가하기
+	AddChildObject(new QuitItem(12,     48 + 44 + 44));
 }
 
 void GameMenu::Update()
 {
-
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -61,7 +65,7 @@ void MenuHeading::Update()
 
 ///////////////////////////////////////////////////////////////////////
 /////////////게임으로 돌아가기서 계속하기 메뉴 아이템 버튼///////////////////
-ContinueItem::ContinueItem(float px, float py) : Button("", "", true, px, py, 5)
+ContinueItem::ContinueItem(float px, float py) : Button("", "", true, px, py, 6)
 {}
 
 ContinueItem::~ContinueItem()
@@ -74,10 +78,14 @@ void ContinueItem::Start()
 	SetPressImg ("Asset/UI/Menu/active.bmp");
 }
 
+void ContinueItem::OnClick()
+{
+	cout << "게임 계속하기" << endl;
+}
 
 ////////////////////////////////////////////////////////////////////
 //////////////다시시작하기 메뉴 아이템 버튼 //////////////////////////
-RestartItem::RestartItem(float px, float py) : Button("", "", true, px, py, 5)
+RestartItem::RestartItem(float px, float py) : Button("", "", true, px, py, 6)
 {}
 
 RestartItem::~RestartItem()
@@ -90,9 +98,14 @@ void RestartItem::Start()
 	SetPressImg("Asset/UI/Menu/active.bmp");
 }
 
+void RestartItem::OnClick()
+{
+	cout << "게임 다시하기" << endl;
+}
+
 ///////////////////////////////////////////////////////////////////
 //////////////윈도우로 나가기(끝내기) 메뉴 아이템 버튼/////////////////
-QuitItem::QuitItem(float px, float py) : Button("", "", true, px, py, 5)
+QuitItem::QuitItem(float px, float py) : Button("", "", true, px, py, 6)
 {}
 
 QuitItem::~QuitItem()
@@ -103,4 +116,9 @@ void QuitItem::Start()
 	SetNormalImg("Asset/UI/Menu/normal.bmp");
 	SetHoverImg("Asset/UI/Menu/hover.bmp");
 	SetPressImg("Asset/UI/Menu/active.bmp");
+}
+
+void QuitItem::OnClick()
+{
+	cout << "게임 끝내기" << endl;
 }

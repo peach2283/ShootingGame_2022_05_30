@@ -78,7 +78,7 @@ void Button::Update()
 			//cout << "Release 상태 " << endl;
 		
 			//버튼 클릭 동작..실행하기//
-			cout << "이미지 버튼 클릭 .. 동작 실행하기" << endl;
+			OnClick();
 
 			//버튼의 상태를..처음부터 다시 동작 시키기
 			state = State::normal;
@@ -144,4 +144,9 @@ void Button::SetHoverImg(const char* fileName)
 void Button::SetPressImg(const char* fileName)
 {
 	BMP::ReadBMP(fileName, &pressImg);
+}
+
+void Button::OnClick()
+{
+	cout << "부모 버튼 클래스 가상 함수" << endl;
 }

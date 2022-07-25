@@ -35,5 +35,7 @@ public:
 	void SetHoverImg (const char* fileName);
 	void SetPressImg (const char* fileName);
 
+	//클릭 가상 함수
+	virtual void OnClick();
 };
 

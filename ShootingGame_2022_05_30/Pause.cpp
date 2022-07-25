@@ -13,3 +13,8 @@ void Pause::Start()
 	SetHoverImg ("Asset/UI/Button/Pause.bmp");
 	SetPressImg ("Asset/UI/Button/Pause.bmp");
 }
+
+void Pause::OnClick()
+{
+	cout << "게임 일시정지 버튼" << endl;
+}
