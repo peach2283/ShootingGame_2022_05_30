@@ -180,6 +180,7 @@
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerIcon.h" />
     <ClInclude Include="Propeller.h" />
     <ClInclude Include="Radar.h" />
     <ClInclude Include="Random.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerIcon.cpp" />
     <ClCompile Include="Propeller.cpp" />
     <ClCompile Include="Radar.cpp" />
     <ClCompile Include="Random.cpp" />

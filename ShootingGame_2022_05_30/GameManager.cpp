@@ -45,6 +45,11 @@ void GameManager::SetPause(bool pause)
 	this->isPause = pause;
 }
 
+int GameManager::GetPlayerCount()
+{
+	return playerCount;
+}
+
 GameManager* GameManager::Instance()
 {
 	return instance;

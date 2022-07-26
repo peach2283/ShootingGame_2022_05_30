@@ -150,6 +150,9 @@
     <ClInclude Include="UIManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerIcon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShootingGame_2022_05_30.rc">
@@ -289,6 +292,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIcon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

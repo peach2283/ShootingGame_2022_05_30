@@ -27,6 +27,9 @@ public:
 	bool GetPause();
 	void SetPause(bool pause);
 
+	//playerCounter ╟тем
+	int GetPlayerCount();
+
 	static GameManager* Instance();
 };
 

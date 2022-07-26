@@ -39,3 +39,4 @@
 #include "Pause.h"
 #include "GameMenu.h"
 #include "UIManager.h"
+#include "PlayerIcon.h"
