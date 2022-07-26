@@ -38,3 +38,4 @@
 #include "Button.h"
 #include "Pause.h"
 #include "GameMenu.h"
+#include "UIManager.h"

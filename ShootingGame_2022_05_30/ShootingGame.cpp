@@ -43,15 +43,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     ObjectManager::Instantiate(new EnemySpawner(240, 2));
     ObjectManager::Instantiate(new GameManager(0, 0));
+    ObjectManager::Instantiate(new UIManager  (0, 0));
 
     //버튼 테스트
     //ObjectManager::Instantiate(new Button("", "", true, 200,200));
-
-    //Pause 버튼 추가하기
-    ObjectManager::Instantiate(new Pause(430, 5));
-
-    //게임 메뉴 추가하기
-    ObjectManager::Instantiate(new GameMenu(122, 200));
 
     MSG msg;
 

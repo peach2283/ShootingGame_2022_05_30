@@ -4,7 +4,8 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager(float px, float py) : GameObject("", "", true, px, py)
 {
-	this->playerCount = 3; //플레이어 갯수 초기화
+	this->playerCount = 3;      //플레이어 갯수 초기화
+	this->isPause     = false;  //게임이 동작중임
 }
 
 GameManager::~GameManager()
@@ -32,6 +33,16 @@ void GameManager::RespawnPlayer()
 		//게임오버 객체 화면에 추가
 		ObjectManager::Instantiate(new GameOver(30, 250));
 	}
+}
+
+bool GameManager::GetPause()
+{
+	return isPause;
+}
+
+void GameManager::SetPause(bool pause)
+{
+	this->isPause = pause;
 }
 
 GameManager* GameManager::Instance()
