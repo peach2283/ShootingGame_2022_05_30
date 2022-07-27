@@ -4,7 +4,6 @@
 class GameManager : public GameObject
 {
 private:
-
 	static GameManager* instance;
 
 	//플레이어 카운트 변수
@@ -12,6 +11,9 @@ private:
 
 	//게임일지 정지 변수
 	bool isPause;
+
+	//남은 폭탄갯수
+	int bombCount; 
 
 public:
 
@@ -29,6 +31,10 @@ public:
 
 	//playerCounter 게터
 	int GetPlayerCount();
+
+	int  GetBombCount();
+	void DecBombCount();
+	void IncBombCount();
 
 	static GameManager* Instance();
 };

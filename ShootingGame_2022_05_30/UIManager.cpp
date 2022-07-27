@@ -7,6 +7,14 @@ UIManager::UIManager(float px, float py) : GameObject("","", true, px, py)
     this->playerIcon[0] = nullptr;
     this->playerIcon[1] = nullptr;
     this->playerIcon[2] = nullptr;
+
+    this->bombIcon[0] = nullptr;
+    this->bombIcon[1] = nullptr;
+    this->bombIcon[2] = nullptr;
+
+    this->bombIcon[3] = nullptr;
+    this->bombIcon[4] = nullptr;
+    this->bombIcon[5] = nullptr;
 }
 
 UIManager::~UIManager()
@@ -23,6 +31,15 @@ void UIManager::Start()
     playerIcon[0] = Instantiate(new PlayerIcon(250         , 3));
     playerIcon[1] = Instantiate(new PlayerIcon(250 + 45    , 3));
     playerIcon[2] = Instantiate(new PlayerIcon(250 + 45+45 , 3));
+
+    //ÆøÅº °¹¼ö ¾ÆÀÌÄÜ .. Ãß°¡ÇÏ±â
+    bombIcon[0] = Instantiate(new BombIcon(10,           750));
+    bombIcon[1] = Instantiate(new BombIcon(10 + 25     , 750));
+    bombIcon[2] = Instantiate(new BombIcon(10 + 25 * 2 , 750));
+
+    bombIcon[3] = Instantiate(new BombIcon(10 + 25 * 3 , 750));
+    bombIcon[4] = Instantiate(new BombIcon(10 + 25 * 4 , 750));
+    bombIcon[5] = Instantiate(new BombIcon(10 + 25 * 5 , 750));
 }
 
 void UIManager::Update()
@@ -52,6 +69,20 @@ void UIManager::Update()
         else //i ¹øÂ° ¾ÆÀÌÄÜ ¼û±è
         {
             playerIcon[i]->SetActive(false);
+        }
+    }
+
+    //ÆøÅº Ä«ÀºÆ® ... Ç¥½Ã
+    int bombCount = manager->GetBombCount();
+
+    for (int i = 0; i < 6; i++)
+    {
+        if (i < bombCount)
+        {
+            bombIcon[i]->SetActive(true);
+        }
+        else {
+            bombIcon[i]->SetActive(false);
         }
     }
 

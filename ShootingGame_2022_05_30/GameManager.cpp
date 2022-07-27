@@ -6,6 +6,7 @@ GameManager::GameManager(float px, float py) : GameObject("", "", true, px, py)
 {
 	this->playerCount = 3;      //플레이어 갯수 초기화
 	this->isPause     = false;  //게임이 동작중임
+	this->bombCount   = 3;      //폭탄 갯수 초기화
 }
 
 GameManager::~GameManager()
@@ -48,6 +49,26 @@ void GameManager::SetPause(bool pause)
 int GameManager::GetPlayerCount()
 {
 	return playerCount;
+}
+
+int GameManager::GetBombCount()
+{
+	return bombCount;
+}
+
+void GameManager::DecBombCount()
+{
+	bombCount--;
+}
+
+void GameManager::IncBombCount()
+{
+	bombCount++;
+
+	if (bombCount > 6)
+	{
+		bombCount = 6;
+	}
 }
 
 GameManager* GameManager::Instance()

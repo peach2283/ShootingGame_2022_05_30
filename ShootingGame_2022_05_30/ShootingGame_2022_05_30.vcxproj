@@ -151,6 +151,7 @@
     <ClInclude Include="BMP.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="BombExp.h" />
+    <ClInclude Include="BombIcon.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossChildExp.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="BMP.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="BombExp.cpp" />
+    <ClCompile Include="BombIcon.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossChildExp.cpp" />

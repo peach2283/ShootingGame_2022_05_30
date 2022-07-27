@@ -6,10 +6,8 @@ Player::Player(float px, float py) :Animation("ÇÃ·¹ÀÌ¾î", "", true, px, py, 2)
 	this->speed      = 200;
 	
 	this->laserCount  = 1;   //¾ÆÀÌÅÛÀ» È¹µæÇÏ¸é..¹ß»ç°¹¼ö Áõ°¡
-	this->bombCount   = 3;   //ÇÃ·¹ÀÌ¾î ÆøÅº °¹¼ö
-
-	this->fireTimer = 0;   
-	this->fireDelay = 0.2; //¹ß»ç°£ Áö¿¬½Ã°£
+	this->fireTimer   = 0;   
+	this->fireDelay   = 0.2; //¹ß»ç°£ Áö¿¬½Ã°£
 
 	this->shieldTimer = 5;            //¹æÆÐ Áö¼Ó½Ã°£
 	this->state       = State::appear;//ÇÃ·¹ÀÌ¾î ÃÊ±â»óÅÂ
@@ -180,7 +178,9 @@ void Player::Fire()  //¹ß»ç ÇÔ¼ö
 	///////////////ÆøÅº ¹ß»çÇÏ±â/////////////
 	if (Input::GetKeyDown(KeyCode::Z) == true)
 	{
-		if (bombCount > 0)
+		GameManager* manager = GameManager::Instance();
+
+		if ( manager->GetBombCount()  > 0)
 		{
 			float px, py;
 
@@ -188,7 +188,7 @@ void Player::Fire()  //¹ß»ç ÇÔ¼ö
 			//Instantiate(new Bomb(px+15, py-20));
 			Instantiate(new Bomb(px + 15, py));
 
-			bombCount--;  //ÆøÅº °¹¼ö °¨¼Ò
+			manager->DecBombCount();  //ÆøÅº °¹¼ö °¨¼Ò
 		}
 		else {
 			cout << "³²Àº ÆøÅºÀÌ ¾ø½À´Ï´Ù" << endl;
@@ -252,9 +252,11 @@ void Player::OnTriggerStay2D(Collider2D collision)
 	else if (tag == "ÆøÅº¾ÆÀÌÅÛ")
 	{
 		//ÆøÅº Ä«¿îÆ®(ÆøÅº°¹¼ö) Áõ°¡//
-		bombCount++;
-	}
+		//GameManager* manager = GameManager::Instance();
+		//manager->IncBombCount();
 
+		GameManager::Instance()->IncBombCount();
+	}
 	/*****************************************/
 }
 

@@ -40,3 +40,4 @@
 #include "GameMenu.h"
 #include "UIManager.h"
 #include "PlayerIcon.h"
+#include "BombIcon.h"
