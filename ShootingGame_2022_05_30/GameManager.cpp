@@ -7,6 +7,7 @@ GameManager::GameManager(float px, float py) : GameObject("", "", true, px, py)
 	this->playerCount = 3;      //플레이어 갯수 초기화
 	this->isPause     = false;  //게임이 동작중임
 	this->bombCount   = 3;      //폭탄 갯수 초기화
+	this->hp	      = 100;    //플레이어 체력 초기화
 }
 
 GameManager::~GameManager()
@@ -69,6 +70,16 @@ void GameManager::IncBombCount()
 	{
 		bombCount = 6;
 	}
+}
+
+void GameManager::DoDamage(float amount)
+{
+	hp = hp - amount;
+}
+
+float GameManager::GetHP()
+{
+	return hp;
 }
 
 GameManager* GameManager::Instance()

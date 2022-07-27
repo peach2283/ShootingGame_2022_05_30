@@ -15,6 +15,9 @@ private:
 	//³²Àº ÆøÅº°¹¼ö
 	int bombCount; 
 
+	//ÇÃ·¹ÀÌ¾î Ã¼·Â
+	float hp;  
+
 public:
 
 	GameManager(float px, float py);
@@ -35,6 +38,9 @@ public:
 	int  GetBombCount();
 	void DecBombCount();
 	void IncBombCount();
+
+	void  DoDamage(float amount);
+	float GetHP();
 
 	static GameManager* Instance();
 };

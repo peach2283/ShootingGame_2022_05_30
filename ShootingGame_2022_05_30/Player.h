@@ -7,8 +7,7 @@ class Player : public Animation
 	enum class State {appear = 0, control = 1};
 
 private:
-	float hp;   //플레이어 체력[참고...나중에 GameManager로 이동함]
-
+	
 	float speed;
 	int   laserCount;  //발사되는 레이저 갯수
 

@@ -86,4 +86,7 @@ void UIManager::Update()
         }
     }
 
+    //플레이어 체력바 .. 표시
+    float hp = manager->GetHP();
+
 }
